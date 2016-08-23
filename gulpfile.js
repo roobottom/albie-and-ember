@@ -5,6 +5,7 @@ var del = require('del');
 var webpack = require('webpack-stream');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
+var path = require('path');
 
 var paths = {
   templates: './pages/**/*',
@@ -67,11 +68,12 @@ gulp.task('webpack', ['clean:webpack'],function() {
 });
 
 gulp.task('less', ['clean:css'],function() {
-  return gulp.src('./less/**/*.less')
+  return gulp.src('./less/**/base.less')
   .pipe(less({
-    plugins: []
+    plugins: [],
+    paths: [path.join(__dirname, 'less', 'includes')]
   }))
-  .pipe(gulp.dest('./_site/css'));
+  .pipe(gulp.dest('./_site/css/'));
 });
 
 gulp.task('default', ['connect', 'copy', 'webpack', 'less', 'watch']);
