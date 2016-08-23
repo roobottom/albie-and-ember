@@ -4,17 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack ./assets/js/index.js ./assets/package.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "css-loader": "^0.23.1",
     "del": "^2.2.2",
     "gulp-connect": "^5.0.0",
     "gulp-htmlmin": "^2.0.0",
+    "gulp-less": "^3.1.0",
     "gulp-nodemon": "^2.1.0",
-    "webpack": "^1.13.2"
+    "gulp-uglify": "^2.0.0",
+    "less": "^2.7.1",
+    "less-plugin-pleeease": "0.0.3",
+    "webpack": "^1.13.2",
+    "webpack-stream": "^3.2.0"
   }
 }
