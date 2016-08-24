@@ -6,6 +6,8 @@ var webpack = require('webpack-stream');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
 var path = require('path');
+var cleanCSS = require('gulp-clean-css');
+var htmlmin = require('gulp-htmlmin');
 
 var paths = {
   templates: './pages/**/*',
@@ -30,10 +32,13 @@ gulp.task('reload', function () {
     .pipe(connect.reload());
 });
 
-//build tasks for html and static assets.
+gulp.task('clean:html', function () {
+  return del([
+    '_site/**/*.html'
+  ]);
+});
 gulp.task('clean:static', function () {
   return del([
-    '_site/**/*.html',
     '_site/images'
   ]);
 });
@@ -44,12 +49,19 @@ gulp.task('clean:webpack', function () {
 });
 gulp.task('clean:css', function () {
   return del([
-    '_site/**/*.css'
+    '_site/css'
   ]);
 });
 
-gulp.task('copy', ['clean:static'], function() {
-  gulp.src(['./pages/**/*.html','./assets/**/*'])
+gulp.task('copy',['copy:assets','copy:html']);
+gulp.task('copy:assets', ['clean:static'], function() {
+  gulp.src(['./assets/**/*'])
+  .pipe(gulp.dest('./_site/'));
+});
+
+gulp.task('copy:html', ['clean:html'], function() {
+  gulp.src(['./pages/**/*.html'])
+  .pipe(htmlmin({collapseWhitespace: true}))
   .pipe(gulp.dest('./_site/'));
 });
 
@@ -73,6 +85,7 @@ gulp.task('less', ['clean:css'],function() {
     plugins: [],
     paths: [path.join(__dirname, 'less', 'includes')]
   }))
+  .pipe(cleanCSS())
   .pipe(gulp.dest('./_site/css/'));
 });
 
