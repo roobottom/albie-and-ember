@@ -90,3 +90,4 @@ gulp.task('less', ['clean:css'],function() {
 });
 
 gulp.task('default', ['connect', 'copy', 'webpack', 'less', 'watch']);
+gulp.task('build',['copy','webpack','less'])
