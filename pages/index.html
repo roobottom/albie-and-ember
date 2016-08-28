@@ -23,6 +23,14 @@
         <li><a href="#page-10">Page 10</a></li>
       </ol>
 
+      {% for page in pages %}
+        <article class="page page--{{page.id}}" data-page-id="{{page.id}}" id="page-{{page.id}}">
+          <div class="page__prose">
+            {{page.content|safe}}
+          </div>
+        </article>
+      {% endfor %}
+
       <article class="page page--1" data-page-id="1" id="page-1">
         <div class="page__prose">
           <h1>Albie and Ember</h1>

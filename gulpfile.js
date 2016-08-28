@@ -8,6 +8,9 @@ var less = require('gulp-less');
 var path = require('path');
 var cleanCSS = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
+var nunjucks = require('gulp-nunjucks');
+
+var pageData = require('./data/pages.json');
 
 var paths = {
   templates: './pages/**/*',
@@ -61,6 +64,7 @@ gulp.task('copy:assets', ['clean:static'], function() {
 
 gulp.task('copy:html', ['clean:html'], function() {
   gulp.src(['./pages/**/*.html'])
+  .pipe(nunjucks.compile(pageData))
   .pipe(htmlmin({collapseWhitespace: true}))
   .pipe(gulp.dest('./_site/'));
 });
