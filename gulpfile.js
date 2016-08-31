@@ -25,8 +25,8 @@ var webpackConfig = {
 
 gulp.task('connect', function() {
   connect.server({
-    root: '_site',
-    livereload: true
+    root: '_site'
+    //,livereload: true
   });
 });
 
@@ -73,7 +73,7 @@ gulp.task('watch', function () {
   gulp.watch(['./pages/**/*'],['copy']);
   gulp.watch(['./modules/**/*.js'],['webpack']);
   gulp.watch(['./less/**/*.less'],['less']);
-  gulp.watch(['./_site/**/*'], ['reload']);
+  //gulp.watch(['./_site/**/*'], ['reload']);
 });
 
 gulp.task('webpack', ['clean:webpack'],function() {
