@@ -64,8 +64,8 @@ gulp.task('watch', function () {
 });
 
 gulp.task('js', ['clean:js'],function() {
-  return gulp.src('./modules/i.js')
-  .pipe(uglify())
+  return gulp.src(['./modules/fn.js'])
+  //.pipe(uglify())
   .pipe(gulp.dest('_site/'));
 });
 
