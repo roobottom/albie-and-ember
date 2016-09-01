@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var nodemon = require('gulp-nodemon');
 var connect = require('gulp-connect');
 var del = require('del');
-var webpack = require('webpack-stream');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
 var path = require('path');
@@ -17,11 +16,6 @@ var paths = {
   assets: './assets/**/*'
 };
 
-var webpackConfig = {
-  output: {
-    filename: "a.js"
-  }
-};
 
 gulp.task('connect', function() {
   connect.server({
@@ -45,7 +39,7 @@ gulp.task('clean:static', function () {
     '_site/images'
   ]);
 });
-gulp.task('clean:webpack', function () {
+gulp.task('clean:js', function () {
   return del([
     '_site/*.js'
   ]);
@@ -71,14 +65,13 @@ gulp.task('copy:html', ['clean:html'], function() {
 
 gulp.task('watch', function () {
   gulp.watch(['./pages/**/*'],['copy']);
-  gulp.watch(['./modules/**/*.js'],['webpack']);
+  gulp.watch(['./modules/**/*.js'],['js']);
   gulp.watch(['./less/**/*.less'],['less']);
   //gulp.watch(['./_site/**/*'], ['reload']);
 });
 
-gulp.task('webpack', ['clean:webpack'],function() {
-  return gulp.src('./modules/index.js')
-  .pipe(webpack(webpackConfig))
+gulp.task('js', ['clean:js'],function() {
+  return gulp.src('./modules/i.js')
   .pipe(uglify())
   .pipe(gulp.dest('_site/'));
 });
@@ -93,5 +86,5 @@ gulp.task('less', ['clean:css'],function() {
   .pipe(gulp.dest('./_site/css/'));
 });
 
-gulp.task('default', ['connect', 'copy', 'webpack', 'less', 'watch']);
-gulp.task('build',['copy','webpack','less'])
+gulp.task('default', ['connect', 'copy', 'js', 'less', 'watch']);
+gulp.task('build',['copy','js','less'])
