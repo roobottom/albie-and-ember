@@ -8,6 +8,7 @@ var path = require('path');
 var cleanCSS = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
 var nunjucks = require('gulp-nunjucks');
+var autoprefixer = require('gulp-autoprefixer');
 
 var pageData = require('./data/pages.json');
 
@@ -74,6 +75,10 @@ gulp.task('less', ['clean:css'],function() {
   .pipe(less({
     plugins: [],
     paths: [path.join(__dirname, 'less', 'includes')]
+  }))
+  .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
   }))
   .pipe(cleanCSS())
   .pipe(gulp.dest('./_site/css/'));
