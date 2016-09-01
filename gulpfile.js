@@ -20,13 +20,7 @@ var paths = {
 gulp.task('connect', function() {
   connect.server({
     root: '_site'
-    //,livereload: true
   });
-});
-
-gulp.task('reload', function () {
-  gulp.src('./_site/**/*')
-    .pipe(connect.reload());
 });
 
 gulp.task('clean:html', function () {
@@ -67,7 +61,6 @@ gulp.task('watch', function () {
   gulp.watch(['./pages/**/*'],['copy']);
   gulp.watch(['./modules/**/*.js'],['js']);
   gulp.watch(['./less/**/*.less'],['less']);
-  //gulp.watch(['./_site/**/*'], ['reload']);
 });
 
 gulp.task('js', ['clean:js'],function() {
