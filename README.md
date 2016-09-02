@@ -13,5 +13,5 @@ You can run `gulp` commands directly:
 Running `npm start` will:
 
 * Install all dependancies.
-* Build out the site to the `_site` folder
+* Build out the site to the `docs` folder
 * Start an expressjs server with gzip compression enabled on port `3030`
