@@ -26,13 +26,19 @@
       {% endfor %}
 
       <script>
-      (function(w, d, undefined){
-        d.addEventListener("DOMContentLoaded", function(e) {
+      //defer loading on any other extra functionality until this page is fully loaded.
+      (function(w, d, undefined) {
+        function load(){
             var s = d.createElement('script');
-            s.setAttribute("type","text/javascript");
-            s.setAttribute("src", "fn.js");
-            document.getElementsByTagName("head")[0].appendChild(s);
-        });
+            s.type = 'text/javascript';
+            s.src = 'fn.js';
+            var x = d.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        }
+        if (window.attachEvent)
+            w.attachEvent('onload', load);
+        else
+            w.addEventListener('load', load, false);
       })(window, document);
       </script>
     </body>

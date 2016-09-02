@@ -54,7 +54,7 @@ gulp.task('copy:assets', ['clean:static'], function() {
 gulp.task('copy:html', ['clean:html'], function() {
   gulp.src(['./pages/**/*.html'])
   .pipe(nunjucks.compile(pageData))
-  .pipe(htmlmin({collapseWhitespace: true}))
+  .pipe(htmlmin({collapseWhitespace: true, minifyJS: true}))
   .pipe(gulp.dest('./docs/'));
 });
 
@@ -66,7 +66,7 @@ gulp.task('watch', function () {
 
 gulp.task('js', ['clean:js'],function() {
   return gulp.src(['./modules/fn.js'])
-  //.pipe(uglify())
+  .pipe(uglify())
   .pipe(gulp.dest('docs/'));
 });
 
