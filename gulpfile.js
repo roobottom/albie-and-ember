@@ -41,7 +41,7 @@ gulp.task('clean:js', function () {
 });
 gulp.task('clean:css', function () {
   return del([
-    'docs/css'
+    'docs/*.css'
   ]);
 });
 
@@ -54,24 +54,25 @@ gulp.task('copy:assets', ['clean:static'], function() {
 gulp.task('copy:html', ['clean:html'], function() {
   gulp.src(['./pages/**/*.html'])
   .pipe(nunjucks.compile(pageData))
-  .pipe(htmlmin({collapseWhitespace: true, minifyJS: true}))
+  .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
   .pipe(gulp.dest('./docs/'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./pages/**/*'],['copy']);
+  gulp.watch(['./pages/**/*','./data/**/*'],['copy']);
   gulp.watch(['./modules/**/*.js'],['js']);
   gulp.watch(['./less/**/*.less'],['less']);
 });
 
 gulp.task('js', ['clean:js'],function() {
   return gulp.src(['./modules/fn.js'])
-  .pipe(uglify())
+  //removing the uglify step for dev ±±±±±± PUT THIS BACK.
+  //.pipe(uglify())
   .pipe(gulp.dest('docs/'));
 });
 
 gulp.task('less', ['clean:css'],function() {
-  return gulp.src('./less/**/base.less')
+  return gulp.src('./less/**/b.less')
   .pipe(less({
     plugins: [],
     paths: [path.join(__dirname, 'less', 'includes')]
@@ -81,7 +82,7 @@ gulp.task('less', ['clean:css'],function() {
       cascade: false
   }))
   .pipe(cleanCSS())
-  .pipe(gulp.dest('./docs/css/'));
+  .pipe(gulp.dest('docs/'));
 });
 
 gulp.task('default', ['connect', 'copy', 'js', 'less', 'watch']);

@@ -1,9 +1,16 @@
 @import '_settings.less';
 @import '_normalise.less';
 
+body,html {
+  height: 100%;
+}
+
 body {
   background-color: @background;
   font-family: 'Clarendon Std', 'Century Old Style Std', 'Century Schoolbook', Georgia, serif;
+  @media screen and (min-width: 600px) {
+    font-size: 2vw;
+  }
 }
 
 //accessibilty features

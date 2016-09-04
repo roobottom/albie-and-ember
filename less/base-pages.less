@@ -1,17 +1,109 @@
 .pg {
   width: 100%;
+  height: 100%;
   height: 100vh;
   outline: 1px dotted red;
   display: flex;
   align-items: center;
-  transition: 500ms all;
+  //transition: 500ms background;
 
-  &_txt {
+  &_txt, &_imgs {
     margin: 5vw;
+    position: relative;
   }
 
   &--loaded {
     background-color: lightgreen;
   }
+}
 
+//pages
+#p-1 {
+  background: @page1;
+  color: contrast(@page1, darken(@page1,50%),white);
+}
+#p-2 {
+  background: @page2;
+  color: contrast(@page2, darken(@page2,50%),white);
+}
+#p-3 {
+  background: @page3;
+  color: contrast(@page3, darken(@page3,50%),white);
+}
+
+#p-4 {
+  background: @page4;
+  color: contrast(@page4, darken(@page4,50%),white);
+  flex-direction: column-reverse;
+  .pg_imgs {
+    align-self: flex-start;
+  }
+  .breeze1 {
+    width: 100%;
+    position: relative;
+    use {
+      stroke: lighten(@page4,5%);
+      stroke-width: 3;
+    }
+  }
+  .leaf2 {
+    width: 30px;
+    transform: rotate(-7deg);
+    use {
+      fill: darken(@page4,10%);
+    }
+  }
+  .leaf3 {
+    width: 50px;
+    transform: rotate(30deg);
+    use {
+      fill: lighten(@page4,10%);
+    }
+  }
+  .leaf4 {
+    width: 50px;
+    transform: rotate(-55deg);
+    use {
+      fill: darken(@page4,6%);
+    }
+  }
+  .leaf5 {
+    width: 20px;
+    transform: rotate(199deg);
+    use {
+      fill: lighten(@page4,5%);
+    }
+  }
+  .leaf6 {
+    width: 70px;
+    transform: rotate(120deg);
+    use {
+      fill: darken(@page4,4%);
+    }
+  }
+}
+
+#p-5 {
+  background: @page5;
+  color: contrast(@page5, darken(@page5,50%),white);
+}
+#p-6 {
+  background: @page6;
+  color: contrast(@page6, darken(@page6,50%),white);
+}
+#p-7 {
+  background: @page7;
+  color: contrast(@page7, darken(@page7,50%),white);
+}
+#p-8 {
+  background: @page8;
+  color: contrast(@page8, darken(@page8,50%),white);
+}
+#p-9 {
+  background: @page9;
+  color: contrast(@page9, darken(@page9,50%),white);
+}
+#p-10 {
+  background: @page10;
+  color: contrast(@page10, darken(@page10,50%),white);
 }
