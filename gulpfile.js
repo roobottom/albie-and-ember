@@ -10,8 +10,6 @@ var htmlmin = require('gulp-htmlmin');
 var nunjucks = require('gulp-nunjucks');
 var autoprefixer = require('gulp-autoprefixer');
 
-var pageData = require('./data/pages.json');
-
 var paths = {
   templates: './pages/**/*',
   assets: './assets/**/*'
@@ -52,6 +50,7 @@ gulp.task('copy:assets', ['clean:static'], function() {
 });
 
 gulp.task('copy:html', ['clean:html'], function() {
+  var pageData = require('./data/pages.json');
   gulp.src(['./pages/**/*.html'])
   .pipe(nunjucks.compile(pageData))
   .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))

@@ -5,11 +5,27 @@
   outline: 1px dotted red;
   display: flex;
   align-items: center;
+  justify-content: center;
   //transition: 500ms background;
 
-  &_txt, &_imgs {
-    margin: 5vw;
-    position: relative;
+  &_c {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vh 5vw;
+  }
+
+  &_txt {
+    color: white;
+    text-shadow: 0 1px 1px fade(black,20%);
+  }
+
+  &_imgs > svg{
+    width: 100%;
+    max-height: 40vh;
+    @media screen and (max-height: 405px) {
+      display: none;
+    }
   }
 
   &--loaded {
@@ -20,66 +36,48 @@
 //pages
 #p-1 {
   background: @page1;
-  color: contrast(@page1, darken(@page1,50%),white);
 }
 #p-2 {
   background: @page2;
-  color: contrast(@page2, darken(@page2,50%),white);
 }
 #p-3 {
   background: @page3;
-  color: contrast(@page3, darken(@page3,50%),white);
+  .pg_c {
+    flex-direction: column;
+  }
+  .i1 {
+    fill: darken(@page3,20%);
+    color: darken(@page3,30%);
+  }
 }
 
 #p-4 {
   background: @page4;
-  color: contrast(@page4, darken(@page4,50%),white);
-  flex-direction: column-reverse;
+  .pg_c {
+    flex-direction: column-reverse;
+  }
   .pg_imgs {
     align-self: flex-start;
   }
-  .breeze1 {
-    width: 100%;
-    position: relative;
-    use {
-      stroke: lighten(@page4,5%);
-      stroke-width: 3;
-    }
+  .i1 {//breeze
+    stroke: lighten(@page4,5%);
+    stroke-width: 3;
   }
-  .leaf2 {
-    width: 30px;
-    transform: rotate(-7deg);
-    use {
-      fill: darken(@page4,10%);
-    }
+  .i2 {//leaf
+    fill: darken(@page4,10%);
+    transform: translate(4px,124px) rotate(-24deg) scale(1.1);
   }
-  .leaf3 {
-    width: 50px;
-    transform: rotate(30deg);
-    use {
-      fill: lighten(@page4,10%);
-    }
+  .i3 {//leaf
+    fill: lighten(@page4,5%);
+    transform: translate(166px,4px) rotate(0) scale(.7);
   }
-  .leaf4 {
-    width: 50px;
-    transform: rotate(-55deg);
-    use {
-      fill: darken(@page4,6%);
-    }
+  .i4 {//leaf
+    fill: darken(@page4,6%);
+    transform: translate(426px,125px) rotate(131deg) scale(1.3);
   }
-  .leaf5 {
-    width: 20px;
-    transform: rotate(199deg);
-    use {
-      fill: lighten(@page4,5%);
-    }
-  }
-  .leaf6 {
-    width: 70px;
-    transform: rotate(120deg);
-    use {
-      fill: darken(@page4,4%);
-    }
+  .i5 {//leaf
+    fill: darken(@page4,2%);
+    transform: translate(756px,176px) rotate(-99deg) scale(2)
   }
 }
 
