@@ -8,7 +8,7 @@
     },
     {
       "content":"<p>Oh no! What can Albie do to get back home? Ember and Mummy were already so far away he couldn’t see them anymore.</p><p>Albie lay on the floor for a very long time. So long in fact that it started to get dark.</p><p>Albie was scared and he missed Ember very much.</p>",
-      "images": ["al-h","leaf","leaf","leaf"],
+      "images": ["al-b1","al-h","leaf","leaf","leaf"],
       "width":"1033",
       "height":"200"
     },
@@ -19,7 +19,21 @@
       "height": "300"
     },
     {
-      "content":"<p>He flew over the tree-tops, and up up into the sky.</p><p>“Whee” thought Albie as he flew over the sea, over little fishing boats with twinkly light.</p>"
+      "content":"<p>He flew over the tree-tops, and up up into the sky.</p><p>“Whee” thought Albie as he flew over the sea, over little fishing boats with twinkly light.</p>",
+      "background": [
+        {
+          "image":"boat",
+          "width":"82",
+          "height":"69",
+          "copies":"3"
+        },
+        {
+          "image":"star",
+          "width":"20",
+          "height":"24",
+          "copies":"3"
+        }
+      ]
     },
     {
       "content":"<p>“Whee” thought Albie as he flew over the park, quiet now all the children were in bed.</p>"

@@ -86,11 +86,7 @@
     var navLinks = d.querySelectorAll(opts.navSelector);
     Array.prototype.forEach.call(navLinks, function(el, i){
       bindEvent(el,'click',function(e) {
-        e.preventDefault();
-        pagesFactory();
-        opts.pages.forEach(function(obj) {
-
-        });
+        
       });
     });
   };
