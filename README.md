@@ -11,7 +11,7 @@ The story was designed by following a few core principals:
 * **Text first**: The basic experience should be just text, it should work for users who can only read (e.g., in [Lynx](http://lynx.browser.org/)) or hear text (e.g., in a screen reader).
 * **Device agnostic**: Users should receive a core experience that’s useable regardless of device or screen size.
 * **SVG reuse**: Shapes should be designed to be reused as much as possible by declaring shapes in `<defs>` and calling them with `<use>`.
-* **Javascript is a second class citizen**: The core experience should work without Javascript. Nearly all of the 10Kb budget is given over to HTML/CSS/SVG. The expiation being a small bit of Javascript that lazy-loads an enhanced experience.
+* **Javascript is a second class citizen**: The core experience should work without Javascript. Nearly all of the 10Kb budget is given over to HTML/CSS/SVG. The exception being a small bit of Javascript that lazy-loads an enhanced experience.
 * **Keep enhanced files small**: Just because they’re not counted towards the budget, doesn’t mean lazy-loaded files should be bloated.
 
 ## Tools used
