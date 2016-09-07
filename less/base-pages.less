@@ -6,12 +6,18 @@
   align-items: center;
   justify-content: center;
   //transition: 500ms background;
+  overflow: hidden;
+  position: relative;
 
   &_c {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1vh 5vw;
+    max-width: unit(@layout_max,px);
+    @media screen and (min-width: (unit(@layout_max,px))) {
+      margin: 1vh auto;
+    }
   }
 
   &_txt {
@@ -19,17 +25,27 @@
     text-shadow: 0 1px 1px fade(black,20%);
   }
 
-  &_imgs > svg{
+  &_imgs {
     width: 100%;
-    max-height: 40vh;
-    outline: 1px solid blue;
-    @media screen and (max-height: 405px) {
-      display: none;
+    height: 100%;
+    > svg {
+      width: inherit;
+      height: inherit;
+      max-height: 40vh;
+      //outline: 1px solid blue;
+      @media screen and (max-height: 405px) {
+        display: none;
+      }
     }
   }
 
+  &_bg {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+  }
+
   &--loaded {
-    background-color: lightgreen;
+
   }
 }
 

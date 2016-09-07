@@ -42,14 +42,21 @@
         {% set pageId = loop.index %}
         <article class="pg" id="p-{{pageId}}" aria-label="Page {{pageId}} of {{loop.length}}">
           <div class="pg_c">
+            {% if page.background %}
+            <div class="pg_bg">
+              {% for background in page.background %}
+                <svg width="{{background.width}}" height="{{background.height}}" viewBox="0 0 {{background.width}} {{background.height}}"><use xlink:href="#{{background.image}}" class="b{{loop.index}}"/></svg>
+              {% endfor %}
+            </div>
+            {% endif %}
             <div class="pg_txt">
               {{page.content|safe}}
             </div>
             {% if page.images %}
             <div class="pg_imgs">
-              <svg width="{{page.width}}" height="{{page.height}}" viewBox="0 0 {{page.width}} {{page.height}}">
+              <svg viewBox="0 0 {{page.width}} {{page.height}}">
                 {% for image in page.images %}
-                  <svg aria-hidden="true"><use xlink:href="#{{image}}" class="i{{loop.index}}"/></svg>
+                  {% if not loop.first %}<svg aria-hidden="true">{% endif %}<use xlink:href="#{{image}}" class="i{{loop.index}}"/>{% if not loop.first %}</svg>{% endif %}
                 {% endfor %}
               </svg>
             </div>
