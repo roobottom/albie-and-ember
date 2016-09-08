@@ -1,5 +1,5 @@
 # Albie and Ember.
-Albie and Ember is a single page short story. It’s our entry into the [2016 10K Apart competition](https://a-k-apart.com/), where entrants were encouraged to build a web experience weighing less than 10Kb.
+[Albie and Ember](roobottom.github.io/albie-and-ember/) is a single page short story. It’s our entry into the [2016 10K Apart competition](https://a-k-apart.com/), where entrants were encouraged to build a web experience weighing less than 10Kb.
 
 ## Who made this?
 
