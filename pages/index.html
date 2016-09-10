@@ -52,11 +52,11 @@
             <div class="pg_txt">
               {{item.body|safe}}
             </div>
-            {% if item.images %}
+            {% if item.image %}
             <div class="pg_imgs">
-              <svg viewBox="0 0 {{page.width}} {{page.height}}">
-                {% for image in page.images %}
-                  {% if not loop.first %}<svg aria-hidden="true">{% endif %}<use xlink:href="#{{image}}" class="i{{loop.index}}"/>{% if not loop.first %}</svg>{% endif %}
+              <svg viewBox="0 0 {{item.image.width}} {{item.image.height}}">
+                {% for element in item.image.elements %}
+                  {% if not loop.first %}<svg aria-hidden="true">{% endif %}<use xlink:href="#{{element.name}}" class="i{{loop.index}}"{% if element.transform %} transform="{{element.transform}}"{% endif %}/>{% if not loop.first %}</svg>{% endif %}
                 {% endfor %}
               </svg>
             </div>

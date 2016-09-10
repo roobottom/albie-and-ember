@@ -29,10 +29,12 @@ gulp.task('connect', function() {
   });
 });
 
-gulp.task('clean:html', function () {
+gulp.task('clean:html', function (done) {
+  gulp.on('end', function () { done(); });
   return del([
     'docs/**/*.html'
   ]);
+
 });
 gulp.task('clean:static', function () {
   return del([
@@ -59,7 +61,7 @@ gulp.task('copy:html', ['clean:html','data'], function() {
     return {pages: JSON.parse(fs.readFileSync('./data/data.json'))};
   }))
   .pipe(nunjucks.compile())
-  .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+  //.pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
   .pipe(gulp.dest('./docs/'));
 });
 
