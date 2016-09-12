@@ -2,9 +2,10 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: fade(blue,10%);
+  background: fade(black,10%);
   margin: 0;
   padding: 10px;
+  z-index: 1;
 
   &_i {
     display: inline-block;
@@ -14,14 +15,19 @@
   }
 
   &_l {
-    display: block;
-    margin: 10px;
-    font-size: 80%;
-    color: #333;
-    padding: 10px;
-    background-color: white;
+    @f: 16;
+    @m: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    font-size: unit(@f,px);font-size: unit(@f/@base,em);
+    color: #333;
+    width: unit(@f*@m,px); width: unit(@f*@m/@base,em);
+    height: unit(@f*@m,px); height: unit(@f*@m/@base,em);
+    background-color: fade(white,90%);
     border-radius: 50%;
+
   }
 
 }

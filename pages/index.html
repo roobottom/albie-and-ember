@@ -33,8 +33,8 @@
       </svg>
 
       <ol role="navigation" aria-label="Table of contents" class="toc">
-        {% for page in pages %}
-          <li class="toc_i"><a href="#p-{{loop.index}}" aria-label="Go to page {{loop.index}}" class="toc_l">{{loop.index}}</li>
+        {% for name, item in pages %}
+          <li class="toc_i"><a href="#p-{{loop.index}}" aria-label="Go to page {{loop.index}}" class="toc_l">{{loop.index}}</a></li>
         {% endfor %}
       </ol>
 

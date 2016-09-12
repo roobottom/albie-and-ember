@@ -23,6 +23,9 @@
   &_txt {
     color: white;
     text-shadow: 0 1px 1px fade(black,20%);
+    @media screen and (min-width: (unit(600/@vw_base,em))) {
+      font-size: 2vw;
+    }
   }
 
   &_imgs {
@@ -118,7 +121,7 @@
 }
 
 #p-5 {
-  background: linear-gradient(to bottom, @page5 0%,@page5 70%,darken(@page5,10%) 70%,darken(@page5,10%) 100%);
+  background: @page5;
   color: contrast(@page5, darken(@page5,50%),white);
 }
 #p-6 {
