@@ -4,13 +4,15 @@
 
   var hasListener = !!w.addEventListener;
   var hasAttach = !!w.attachEvent;
-  var hasClassList = !!d.body.classList;
+  var hasHistory = !!w.history.pushState;
+  var hasClassList = !!d.classList;
 
   var opts = {
     pages: [],
     colors: [],
     pageSelector: '.pg',
     pageLoaded: 'pg--loaded',
+    pageCurrent: 'pg--current',
     navSelector: '.toc_l'
   };
 
@@ -30,25 +32,48 @@
     });
     //handle user clicking on the nav links
     handlePageNavigation();
+    //handle hash change
+    bindEvent(w,['hashchange','onhashchange'],function(e) {
+      e.preventDefault();
+      console.log(e);
+    });
   };
+
+  /*
+  ---- Utilities ----
+  */
 
   var bindEvent = function(el,event,cb) {
+    var e = [event,event];
+    if(typeof event === 'object') {
+      e[0] = event[0]; e[1] = event[1];
+    }
     if(hasListener) {
-      el.addEventListener(event,cb);
+      el.addEventListener(e[0],cb);
     }
     if(hasAttach) {
-      el.attachEvent(event,cb);
+      el.attachEvent(e[1],cb);
     }
   };
 
-  var addClass = function(el,className) {
-    if (hasClassList) {
-      el.classList.add(className);
+  //http://www.openjs.com/scripts/dom/class_manipulation.php
+  //with a bit of fiddling from me!
+  var hasClass = function(ele,cls) {
+  	return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+  }
+  var addClass = function(ele,cls) {
+  	if (!hasClass(ele,cls)) {
+      var classNames = ele.className.split(/\s+/);
+      classNames.push(cls);
+      console.log(ele.className = classNames.join(' '));
     }
-    else {
-      el.className += ' ' + className;
-    }
-  };
+  }
+  var removeClass = function(ele,cls) {
+  	if (hasClass(ele,cls)) {
+  		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+  		ele.className=ele.className.replace(reg,' ');
+  	}
+  }
 
   var documentWidth = function() {
     return w.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
@@ -59,6 +84,10 @@
   var documentScrollPosition = function() {
     return d.body.getBoundingClientRect().top * -1;
   };
+
+  /*
+  ---- Functionality ----
+  */
 
   var pagesFactory = function() {
     opts.pages = [];
@@ -80,7 +109,9 @@
     pagesFactory();
     var pageInView = null;
     opts.pages.forEach(function(obj,i) {
+      removeClass(obj.el,opts.pageCurrent);
       if(obj.offset <= documentScrollPosition()) {
+        addClass(obj.el,opts.pageCurrent);
         addClass(obj.el,opts.pageLoaded);
         pageInView = {el: obj.el, id: i};
       };
@@ -147,9 +178,45 @@
     var navLinks = d.querySelectorAll(opts.navSelector);
     Array.prototype.forEach.call(navLinks, function(el, i){
       bindEvent(el,'click',function(e) {
-
+        e.preventDefault();
+        var to = parseInt(this.textContent) - 1;
+        smoothScroll(500,documentScrollPosition(),opts.pages[to].offset);
       });
     });
+  };
+
+  var smoothScroll = function(speed,fromPos,toPos) {
+
+    var pxPerMs = 13; //Pixel distance to travel each ms
+    var hops = (speed - (speed % pxPerMs)) / pxPerMs; //Number of hops in this animation
+    var gap = Math.round((toPos - fromPos) / hops); //Gap between the current position and traget position
+    speed = Math.round(speed / hops); //Speed as a function of hops
+    doSmoothScroll(false,hops,1,speed,fromPos,gap);
+  };
+
+  var doSmoothScroll = function(flag,hops,runs,speed,fromPos,gap) {
+    if(!flag) {
+      setTimeout(function() {
+        var easedGap = easeInOutSine(runs,fromPos,runs*gap,hops);
+        //console.log('gap',gap,'hops',hops,'runs',runs,'speed',speed,'easedGap',easedGap);
+        w.scrollTo(0, easedGap);
+        if(hops===runs) {
+          doSmoothScroll(true,hops,runs,speed,fromPos,gap);
+        }
+        else {
+          doSmoothScroll(false,hops,runs+1,speed,fromPos,gap);
+        }
+      },speed);
+    }
+    else {
+      return;
+    }
+  }
+
+  //easeOut function
+  //t:time,b:start val,c:change in val,d:duration
+  var easeInOutSine = function (t, b, c, d) {
+    return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
   };
 
   init();
