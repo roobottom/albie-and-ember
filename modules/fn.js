@@ -111,10 +111,12 @@
     opts.pages.forEach(function(obj,i) {
       removeClass(obj.el,opts.pageCurrent);
       if(obj.offset <= documentScrollPosition()) {
-        addClass(obj.el,opts.pageCurrent);
         addClass(obj.el,opts.pageLoaded);
         pageInView = {el: obj.el, id: i};
       };
+      if(obj.offset == documentScrollPosition() + 10 || obj.offset == documentScrollPosition() - 10) {
+        addClass(obj.el,opts.pageCurrent);
+      }
     });
     return pageInView;
   };
