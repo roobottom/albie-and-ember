@@ -61,7 +61,7 @@ gulp.task('copy:html', ['clean:html','data'], function() {
     return {pages: JSON.parse(fs.readFileSync('./data/data.json'))};
   }))
   .pipe(nunjucks.compile())
-  //.pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
+  .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
   .pipe(gulp.dest('./docs/'));
 });
 
