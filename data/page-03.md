@@ -1,14 +1,23 @@
 ---
 image:
-  width: 1033
-  height: 200
+  width: 480
+  height: 140
   elements:
     -
       name: "al-b1"
-      transform: "translate(712 70)"
+      transform: "translate(313 6)"
     -
       name: "al-h"
-      transform: "translate(794 77)"
+      transform: "translate(410 -10) rotate(48) scale(.8)"
+    -
+      name: "leaf"
+      transform: "translate(210 80) rotate(-17) scale(.9)"
+    -
+      name: "leaf"
+      transform: "translate(162 89) rotate(124) scale(.95)"
+    -
+      name: "leaf"
+      transform: "translate(10 90) rotate(-40) scale(.8)"
 ---
 Oh no! What can Albie do to get back home? Ember and Mummy were already so far away he couldn’t see them anymore.
 

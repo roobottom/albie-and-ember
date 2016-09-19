@@ -64,66 +64,8 @@
 //pages
 @import 'pages/p1.less';
 @import 'pages/p2.less';
-#p-3 {
-  background: @page3;
-  .pg_c {
-    flex-direction: column;
-  }
-  .pg_imgs {
-    align-self: flex-start;
-  }
-  .i1 {//ablie body
-    fill: darken(@page3,15%);
-    transform: translate(712px,70px);
-  }
-  .i2 {//albie head
-    fill: darken(@page3,10%);
-    color: darken(@page3,20%);
-    transform: translate(794px,77px);
-  }
-  .i3 {//leaf
-    fill: lighten(@page3,7%);
-    transform: translate(460px,150px) rotate(-46deg) scale(1.2);
-  }
-  .i4 {//leaf
-    fill: darken(@page3,6%);
-    transform: translate(330px,155px) rotate(121deg);
-  }
-  .i5 {//left
-    fill: darken(@page3,10%);
-    transform: translate(110px,170px) scale(0.7) rotate(-67deg);
-  }
-}
-
-#p-4 {
-  background: @page4;
-  .pg_c {
-    flex-direction: column-reverse;
-  }
-  .pg_imgs {
-    align-self: flex-start;
-  }
-  .i1 {//breeze
-    stroke: lighten(@page4,5%);
-    stroke-width: 3;
-  }
-  .i2 {//leaf
-    fill: darken(@page4,10%);
-    transform: translate(4px,124px) rotate(-24deg) scale(1.1);
-  }
-  .i3 {//leaf
-    fill: lighten(@page4,5%);
-    transform: translate(166px,4px) rotate(0) scale(.7);
-  }
-  .i4 {//leaf
-    fill: darken(@page4,6%);
-    transform: translate(426px,125px) rotate(131deg) scale(1.3);
-  }
-  .i5 {//leaf
-    fill: darken(@page4,2%);
-    transform: translate(756px,176px) rotate(-99deg) scale(2)
-  }
-}
+@import 'pages/p3.less';
+@import 'pages/p4.less';
 
 #p-5 {
   background: @page5;
