@@ -3,12 +3,16 @@
   .pg_c {
     flex-direction: column-reverse;
   }
-  .pg_imgs {
+  .pg_i {
     width: 100%;
   }
   .i1 {//breeze
     stroke: lighten(@page4,5%);
-    stroke-width: 3;
+    stroke-width: 20;
+    @media screen and (min-width: 800px) {
+      stroke-width: 7;
+    }
+
   }
   .i2 {//leaf
     fill: darken(@page4,10%);

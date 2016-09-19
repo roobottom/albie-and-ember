@@ -1,35 +1,35 @@
 ---
 image:
-  width: 1280
+  width: 220
   height: 220
   elements:
     -
       name: "circle"
-      transform: "translate(1110 110) scale(0.6)"
+      transform: "translate(110 110) scale(0.6)"
     -
       name: "ray"
-      transform: "translate(1105 0)"
+      transform: "translate(105 0)"
     -
       name: "ray"
-      transform: "translate(1105 180)"
+      transform: "translate(105 180)"
     -
       name: "ray"
-      transform: "translate(1040 105) rotate(90)"
+      transform: "translate(220 105) rotate(90)"
     -
       name: "ray"
-      transform: "translate(1220 105) rotate(90)"
+      transform: "translate(40 105) rotate(90)"
     -
       name: "ray"
-      transform: "translate(1195 20) rotate(45)"
+      transform: "translate(25 40) rotate(-45)"
     -
       name: "ray"
-      transform: "translate(1055 170) rotate(45)"
+      transform: "translate(190 30) rotate(45)"
     -
       name: "ray"
-      transform: "translate(1020 30) rotate(-45)"
+      transform: "translate(50 160) rotate(45)"
     -
       name: "ray"
-      transform: "translate(1170 165) rotate(-45)"   
+      transform: "translate(160 165) rotate(-45)"   
 ---
 Albie especially likes it when Mummy takes Ember for a walk in the push-chair.
 
