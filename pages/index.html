@@ -75,19 +75,19 @@
 
       <script>
       //defer loading any other extra functionality until this page is fully loaded.
-      // (function(w, d, undefined) {
-      //   function load(){
-      //       var s = d.createElement('script');
-      //       s.type = 'text/javascript';
-      //       s.src = 'fn.js';
-      //       var x = d.getElementsByTagName('script')[0];
-      //       x.parentNode.insertBefore(s, x);
-      //   }
-      //   if (window.attachEvent)
-      //       w.attachEvent('onload', load);
-      //   else
-      //       w.addEventListener('load', load, false);
-      // })(window, document);
+      (function(w, d, undefined) {
+        function load(){
+            var s = d.createElement('script');
+            s.type = 'text/javascript';
+            s.src = 'fn.js';
+            var x = d.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        }
+        if (window.attachEvent)
+            w.attachEvent('onload', load);
+        else
+            w.addEventListener('load', load, false);
+      })(window, document);
       </script>
     </body>
 </html>

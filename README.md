@@ -14,6 +14,40 @@ The story was designed by following a few core principals:
 * **Javascript is a second class citizen**: The core experience should work without Javascript. Nearly all of the 10Kb budget is given over to HTML/CSS/SVG. The exception being a small bit of Javascript that lazy-loads an enhanced experience.
 * **Keep enhanced files small**: Just because they’re not counted towards the budget, doesn’t mean lazy-loaded files should be bloated.
 
+## How this project attempts to meet the judging criteria
+
+### Accessibility (10 points)
+
+* Wide use of Aria tags and roles
+
+### Interoperability (10 points)
+
+* The basic experience is tested in:
+	* IE9,10,11
+	* Edge latest
+	* Chrome latest
+	* Safari latest
+	* An assortment of Android devices
+	* An assortment of Apple devices
+	* An assortment of Windows devices
+	* The lynx browser (via [Lynxlet](http://habilis.net/lynxlet/) on mac)
+	* The crappiest old PC I could find with the slowest connection and low contrast monitor
+
+### Performance (40 points)
+
+* SVGs all optimised and reused as much as possible.
+* HTML, CSS and JS are all conservatively written
+* A custom build process helps compress everything even more.
+* Editing is made easy by the use of (the excellent) [Nunjucks](https://mozilla.github.io/nunjucks/) templates and a custom markdown build process.
+* All JS is custom written, re-written and tweaked for performance.
+
+### Progressive enhancement (20 points)
+
+### Usefulness or Novelty (10 points)
+### Design & User Experience (10 points)
+
+* 
+
 ## Tools used
 
 A number of tools were used to ensure production code is as small as possible, whilst keeping development code human-readable.
