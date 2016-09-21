@@ -37,6 +37,8 @@
           <path id="loop" d="M958.6 114c-469.8 190-526 50.5-525-22.4.6-37.5 28-83 56-89 35-7.2 69.8 10.3 70.6 39 2.4 87.7-248.5 273.2-564.2 182" fill="none" stroke-linecap="round" stroke-dasharray="10,20" stroke-linejoin="round"/>
           <!-- pane -->
           <path id="window" d="M0 0h68v68H0zm78 0h68v68H78zM0 78h68v68H0zm78 0h68v68H78z"/>
+          <!-- zzz -->
+          <path id="z" d="M11 0L9.2 14.5 36 17.7l-33.7 33L.6 64.3l50.4 6L54.5 56l-29.8-3.6 33.6-33L60 6"/>
           <!-- multi path svgs must be <symbol>s -->
           <symbol id="al-h">
             <path d="M68 6c19.2-13.8 48 3 54 23.4 6.3 20.4-4.3 42-25.6 48-41.6 12-96.4-23-95.4-35C2.6 17.7 18 41.8 68 6z"/>
@@ -67,6 +69,7 @@
             </div>
             {% endif %}
             <div class="pg_t">
+              <p class="pg_l">Page {{loop.index}}</p>
               {{item.body|safe}}
             </div>
             {% if item.image %}

@@ -5,6 +5,9 @@ image:
   elements:
     -
       name: "house"
+    -
+      name: "window"
+      transform: "scale(.35) translate(490 260)"
 background:
   -
     name: "star"

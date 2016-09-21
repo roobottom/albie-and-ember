@@ -3,13 +3,15 @@
   .pg_c {
     flex-direction: column-reverse;
   }
-  .pg_i > svg {
-    float: right;
-    max-width: 300px;
-  }
-  .pg_t, .pg_i {
-    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
-      width: 100%;
+  .pg_i {
+    align-self: flex-end;
+    > svg {
+      max-width: 300px;
+      width: 50%;
+      float: right;
+      @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+        width: 100%;
+      }
     }
   }
   .i1 {//sun

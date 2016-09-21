@@ -20,11 +20,11 @@
 
   var init = function() {
     checkPageInView();
-    initColors();
+    //initColors();
     //handle scroll
     bindEvent(w,'scroll',function() {
       checkPageInView();
-      replaceBgColor();
+      //replaceBgColor();
     });
     //handle resize
     bindEvent(w,'resize',function() {

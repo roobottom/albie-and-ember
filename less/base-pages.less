@@ -1,7 +1,7 @@
 .pg {
   width: 100%;
-  height: 100%;
-  height: 100vh;
+  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,12 +13,20 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 2% 5%;
-    margin: 1vh 5vw;
     max-width: unit(@layout_max,px);
-
+    padding: 30px 0;
     @media screen and (min-width: (unit(@layout_max,px))) {
-      margin: 1vh auto;
+      margin: 0 auto;
+    }
+  }
+
+  &_l {
+    @f: 18;
+    font-size: unit(@f,px);
+    font-size: unit(@f/@base,rem);
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      font-size: unit(@f*1.5,px);
+      font-size: unit(@f*1.5/@base,rem);
     }
   }
 
@@ -29,6 +37,8 @@
     font-size: unit(@f,px);
     font-size: unit(@f/@base,rem);
     line-height: 1.5;
+    padding: unit(30,px);
+    padding: unit(30/@base,rem);
     @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       font-size: unit(@f*1.5,px);
       font-size: unit(@f*1.5/@base,rem);
@@ -40,8 +50,6 @@
     > svg {
       width: 100%;
       height: 100%;
-      //TODO: sort out short screen sizes.
-      //max-height: 200px;
       @media screen and (max-height: 405px) {
         display: none;
       }
@@ -49,8 +57,7 @@
   }
 
   &_t,&_i {
-    padding: unit(30,px);
-    padding: unit(30/@base,rem);
+    position: relative;//fix z-index on pages with bg images.
   }
 
   &_b {
@@ -75,12 +82,5 @@
 @import 'pages/p6.less';
 @import 'pages/p7.less';
 @import 'pages/p8.less';
-
-#p-9 {
-  background: @page9;
-  color: contrast(@page9, darken(@page9,50%),white);
-}
-#p-10 {
-  background: @page10;
-  color: contrast(@page10, darken(@page10,50%),white);
-}
+@import 'pages/p9.less';
+@import 'pages/p10.less';
