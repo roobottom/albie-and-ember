@@ -15,6 +15,7 @@ image:
     -
       name: "arm"
       transform: "translate(40 170)"
+      clip: "url(#clip)"
 ---
 # Albie and Ember
 

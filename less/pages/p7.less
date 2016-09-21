@@ -1,0 +1,44 @@
+#p-7 {
+  background: @page7;
+  .pg_c {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      flex-direction: row;
+    }
+  }
+
+  .pg_t {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      width: 70%;
+    }
+  }
+  .pg_i {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      width: 30%;
+    }
+    align-self: flex-end;
+    >svg {
+      max-width: 250px;
+    }
+  }
+
+  .i1 {
+    fill: darken(@page7,10%);
+    fill: fade(black,10%);
+  }
+  .b1 {
+    fill: fade(white,22%);
+    top: 20%;
+    right: 15%;
+  }
+  .b2 {
+    fill: fade(white,18%);
+    top: 10%;
+    left: 5%;
+  }
+  .b3 {
+    fill: fade(white,25%);
+    top: 27%;
+    left: 50%;
+  }
+
+}

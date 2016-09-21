@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  //transition: 500ms background;
   overflow: hidden;
   position: relative;
 
@@ -13,6 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     margin: 2% 5%;
     margin: 1vh 5vw;
     max-width: unit(@layout_max,px);
@@ -23,15 +23,16 @@
   }
 
   &_t {
-    @f: 20;
+    @f: 22;
     color: white;
     text-shadow: 0 1px 1px fade(black,20%);
     font-size: unit(@f,px);
     font-size: unit(@f/@base,rem);
-    line-height: 1.2;
-    @media screen and (min-width: (unit(600/@base,em))) {
+    line-height: 1.5;
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       font-size: unit(@f*1.5,px);
       font-size: unit(@f*1.5/@base,rem);
+      line-height: 1.3;
     }
   }
 
@@ -39,7 +40,8 @@
     > svg {
       width: 100%;
       height: 100%;
-      //outline: 1px solid blue;
+      //TODO: sort out short screen sizes.
+      //max-height: 200px;
       @media screen and (max-height: 405px) {
         display: none;
       }
@@ -71,16 +73,9 @@
 @import 'pages/p4.less';
 @import 'pages/p5.less';
 @import 'pages/p6.less';
+@import 'pages/p7.less';
+@import 'pages/p8.less';
 
-
-#p-7 {
-  background: @page7;
-  color: contrast(@page7, darken(@page7,50%),white);
-}
-#p-8 {
-  background: @page8;
-  color: contrast(@page8, darken(@page8,50%),white);
-}
 #p-9 {
   background: @page9;
   color: contrast(@page9, darken(@page9,50%),white);

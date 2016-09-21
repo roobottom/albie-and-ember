@@ -1,0 +1,19 @@
+#p-8 {
+  background: @page8;
+  .pg_c {
+    flex-direction: column-reverse;
+  }
+  .pg_i {
+    align-self: stretch;
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      width: 100%;
+    }
+  }
+  .i1 {
+    stroke: lighten(@page8,80%);
+    stroke-width: 5;
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      stroke-width: 3;
+    }
+  }
+}

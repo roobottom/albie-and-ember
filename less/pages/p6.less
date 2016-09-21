@@ -4,7 +4,9 @@
     flex-direction: column-reverse;
   }
   .pg_i {
-    width: 100%;
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      width: 100%;
+    }
   }
   .pg_i>svg {
     float: right;

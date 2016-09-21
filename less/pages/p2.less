@@ -8,14 +8,18 @@
     max-width: 300px;
   }
   .pg_t, .pg_i {
-    width: 100%;
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+      width: 100%;
+    }
   }
-  .i1 {
+  .i1 {//sun
     fill: darken(@page2,12%);
+    fill: fade(white,20%);
   }
   .i2, .i3, .i4, .i5,
-  .i6, .i7, .i8, .i9 {
+  .i6, .i7, .i8, .i9 {//rays
     stroke: darken(@page2,12%);
+    stroke: fade(white,20%);
     stroke-width: 10;
   }
 }

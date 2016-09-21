@@ -1,14 +1,12 @@
 #p-1 {
-  @bp: 800px;
   background: @page1;
   .pg_c {
-    flex-direction: column;
-    @media screen and (min-width: @bp) {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       flex-direction: row;
     }
   }
   .pg_t, .pg_i {
-    @media screen and (min-width: @bp) {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       width: 50%;
     }
   }
@@ -22,7 +20,7 @@
     fill: lighten(@page1,2%);
     color: darken(@page1,30%);
   }
-  .i4 {
+  .i4 {//arm
     fill: @page1;
   }
 }

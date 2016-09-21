@@ -3,20 +3,22 @@
   background: @page5;
   .pg_c {
     flex-direction: column;
-    @media screen and (min-width: @bp) {
+    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       flex-direction: row;
     }
   }
-  .pg_t {
-    width: 60%;
-  }
-  .pg_i {
-    width: 40%;
+  @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+    .pg_t {
+      width: 60%;
+    }
+    .pg_i {
+      width: 40%;
+    }
   }
   .i1 {
     fill: darken(@page5, 10%);
   }
   .i2,.i3,.i4 {
-    fill: lighten(@page5,10%);  
+    fill: lighten(@page5,10%);
   }
 }
