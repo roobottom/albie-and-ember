@@ -188,7 +188,6 @@
   };
 
   var smoothScroll = function(speed,fromPos,toPos) {
-
     var pxPerMs = 13; //Pixel distance to travel each ms
     var hops = (speed - (speed % pxPerMs)) / pxPerMs; //Number of hops in this animation
     var gap = Math.round((toPos - fromPos) / hops); //Gap between the current position and traget position
@@ -200,7 +199,6 @@
     if(!flag) {
       setTimeout(function() {
         var easedGap = easeInOutSine(runs,fromPos,runs*gap,hops);
-        //console.log('gap',gap,'hops',hops,'runs',runs,'speed',speed,'easedGap',easedGap);
         w.scrollTo(0, easedGap);
         if(hops===runs) {
           doSmoothScroll(true,hops,runs,speed,fromPos,gap);

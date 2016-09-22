@@ -1,18 +1,22 @@
-.pg {
+section {
   width: 100%;
-  min-height: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-
-  &_c {
+  @media all {
+    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .c {
+    @media all {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
     max-width: unit(@layout_max,px);
     padding: 30px 0;
     @media screen and (min-width: (unit(@layout_max,px))) {
@@ -20,7 +24,7 @@
     }
   }
 
-  &_l {
+  .l {
     @f: 18;
     font-size: unit(@f,px);
     font-size: unit(@f/@base,rem);
@@ -30,7 +34,7 @@
     }
   }
 
-  &_t {
+  .t {
     @f: 22;
     color: white;
     text-shadow: 0 1px 1px fade(black,20%);
@@ -46,31 +50,25 @@
     }
   }
 
-  &_i {
+  .i {
     > svg {
       width: 100%;
       height: 100%;
     }
   }
 
-  &_t,&_i {
+  .t,.i {
     position: relative;//fix z-index on pages with bg images.
   }
 
-  &_b {
+  .b {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     >svg  {
       position: absolute;
     }
   }
-
-  &--loaded {
-
-  }
 }
-
-//pages
 @import 'pages/p1.less';
 @import 'pages/p2.less';
 @import 'pages/p3.less';

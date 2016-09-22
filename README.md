@@ -19,9 +19,11 @@ The story was designed by following a few core principals:
 ### Accessibility (10 points)
 
 * Wide use of Aria tags and roles
+* Contrast of `background-color` and `color` is tested AA complient. 
 
 ### Interoperability (10 points)
 
+* `@media all` is used to cut the mustard, to isolate some of the more advanced css from older browsers that might mangle it.
 * The basic experience is tested in:
 	* IE9,10,11
 	* Edge latest
@@ -33,6 +35,7 @@ The story was designed by following a few core principals:
 	* The lynx browser (via [Lynxlet](http://habilis.net/lynxlet/) on mac)
 	* The crappiest old PC I could find with the slowest connection and low contrast monitor
 
+
 ### Performance (40 points)
 
 * SVGs all optimised and reused as much as possible.
@@ -43,7 +46,13 @@ The story was designed by following a few core principals:
 
 ### Progressive enhancement (20 points)
 
+* This is, at its heart, a story. If nothing else is possible, the basic story text should be accessible to all browsers.
+* Javascript is lazy loaded and only used to add-to the main experience
+
 ### Usefulness or Novelty (10 points)
+
+* Well, it’s an original story!
+
 ### Design & User Experience (10 points)
 
 * 

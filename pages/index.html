@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title>Albie and Ember, a children's story</title>
@@ -30,7 +30,7 @@
           <!-- ray -->
           <path id="ray" d="M5 5v30" fill="none" stroke-linecap="round"/>
           <!-- arm -->
-          <path id="arm" d="M-55 275.4c121.3-183 82.5-224 88.3-229 8-7.3 11.7 4 19.4 14.3C60.7 71 56 5.3 74 6c11 .3-1.2 43 9 44.4 5.7 1 20.4-53.3 31.2-50C126 4 105.8 50.8 109 53.7 115 59 130 21 138.5 25 151 30.3 124 62 125 69.4c.7 7.4 23.6-15.6 31-10.7 7.5 5-32 29-37 39C101 135.5 19 263 9.5 270.3c-40 30-64.4 5-64.4 5" clip-path="url(#monkey)"/>
+          <path id="arm" d="M-55 275.4c121.3-183 82.5-224 88.3-229 8-7.3 11.7 4 19.4 14.3C60.7 71 56 5.3 74 6c11 .3-1.2 43 9 44.4 5.7 1 20.4-53.3 31.2-50C126 4 105.8 50.8 109 53.7 115 59 130 21 138.5 25 151 30.3 124 62 125 69.4c.7 7.4 23.6-15.6 31-10.7 7.5 5-32 29-37 39C101 135.5 19 263 9.5 270.3c-40 30-64.4 5-64.4 5"/>
           <!-- house -->
           <path id="house" d="M150 0L0 99v101h300V99"/>
           <!-- loop -->
@@ -45,9 +45,6 @@
             <circle fill="currentColor" cx="78.5" cy="18.5" r="5.5"/>
             <circle fill="currentColor" cx="90.5" cy="32.5" r="5.5"/>
           </symbol>
-          <clipPath id="monkey">
-            <rect x="10" y="10" width="1" height="1"/>
-          </clipPath>
         </defs>
       </svg>
 
@@ -57,33 +54,35 @@
         {% endfor %}
       </ol> #}
 
-      {% for name, item in pages %}
-        {% set pageId = loop.index %}
-        <article class="pg" id="p-{{pageId}}" aria-label="Page {{pageId}} of {{loop.length}}">
-          <div class="pg_c">
-            {% if item.background %}
-            <div class="pg_b">
-              {% for background in item.background %}
-                <svg width="{{background.width}}" height="{{background.height}}" viewBox="0 0 {{background.width}} {{background.height}}" class="b{{loop.index}}"><use xlink:href="#{{background.name}}"/></svg>
-              {% endfor %}
-            </div>
-            {% endif %}
-            <div class="pg_t">
-              <p class="pg_l">Page {{loop.index}}</p>
-              {{item.body|safe}}
-            </div>
-            {% if item.image %}
-            <div class="pg_i">
-              <svg viewBox="0 0 {{item.image.width}} {{item.image.height}}">
-                {% for element in item.image.elements %}
-                  <use xlink:href="#{{element.name}}" class="i{{loop.index}}"{% if element.transform %} transform="{{element.transform}}"{% endif %}/>
+      <article>
+        {% for name, item in pages %}
+          {% set pageId = loop.index %}
+          <section id="p-{{pageId}}" aria-label="Page {{pageId}} of {{loop.length}}">
+            <div class="c">
+              {% if item.background %}
+              <div class="b">
+                {% for background in item.background %}
+                  <svg width="{{background.width}}" height="{{background.height}}" viewBox="0 0 {{background.width}} {{background.height}}" class="b{{loop.index}}"><use xlink:href="#{{background.name}}"/></svg>
                 {% endfor %}
-              </svg>
+              </div>
+              {% endif %}
+              <div class="t">
+                <p class="l">Page {{loop.index}}</p>
+                {{item.body|safe}}
+              </div>
+              {% if item.image %}
+              <aside class="i">
+                <svg viewBox="0 0 {{item.image.width}} {{item.image.height}}">
+                  {% for element in item.image.elements %}
+                    <use xlink:href="#{{element.name}}" class="i{{loop.index}}"{% if element.transform %} transform="{{element.transform}}"{% endif %}/>
+                  {% endfor %}
+                </svg>
+              </aside>
+              {% endif %}
             </div>
-            {% endif %}
-          </div>
-        </article>
-      {% endfor %}
+          </section>
+        {% endfor %}
+      </article>
 
       <script>
       //defer loading any other extra functionality until this page is fully loaded.

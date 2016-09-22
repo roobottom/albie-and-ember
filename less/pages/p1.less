@@ -1,14 +1,13 @@
 #p-1 {
   background: @page1;
-  .pg_c {
+  .c {
     @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       flex-direction: row;
     }
   }
-  .pg_t, .pg_i {
-    @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
-      width: 50%;
-    }
+  @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
+    .i, .t {width: 50%;}
+    .i {float: right;}
   }
   .i1 {//circle
     fill: lighten(@page1,15%);

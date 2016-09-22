@@ -1,15 +1,71 @@
 #p-10 {
   background: @page10;
-  .pg_c {
+  .c {
     flex-direction: column-reverse;
   }
   .i1 {
-    fill: darken(@page10,10%);
+    fill: darken(@page10,20%);
+    animation: zC 3s infinite;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
   }
   .i2 {
-    fill: darken(@page10,8%);
+    fill: darken(@page10,15%);
+    animation: zB 3s infinite;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
   }
   .i3 {
-    fill: darken(@page10,3%);
+    fill: darken(@page10,10%);
+    animation: zA 3s infinite;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
   }
+
+  @keyframes zA {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes zB {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes zC {
+    0% {
+      opacity: 0%;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
 }
