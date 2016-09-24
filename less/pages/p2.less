@@ -1,5 +1,7 @@
 #p-2 {
   background: @page2;
+  //color: contrast(@page2, white, darken(@page2,40%));
+
   .c {
     flex-direction: column-reverse;
   }
@@ -24,4 +26,39 @@
     stroke: fade(white,20%);
     stroke-width: 10;
   }
+
+  .i2 {
+    animation: r 10s infinite ease-in;
+  }
+  .i3 {
+    animation: r 10s infinite ease-in;
+    animation-delay: 2s;
+    animation-direction: reverse;
+  }
+  .i4 {
+    animation: r 10s infinite ease-in;
+    animation-delay: 4s;
+  }
+  .i5 {
+    animation: r 10s infinite ease-in;
+    animation-delay: 6s;
+    animation-direction: reverse;
+  }
+
+  @keyframes r {
+    0% {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 40 20;
+    }
+    80% {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 40 20;
+    }
+    100% {
+      stroke-dashoffset: 60;
+      stroke-dasharray: 40 20;
+    }
+
+  }
+
 }

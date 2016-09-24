@@ -20,6 +20,7 @@
 
   var init = function() {
     checkPageInView();
+    addPageNavigation();
     //initColors();
     //handle scroll
     bindEvent(w,'scroll',function() {
@@ -40,9 +41,10 @@
   };
 
   /*
-  ---- Utilities ----
+  ---- Utilities (like my own mini jQuery. sortof. well, at least a way of writing less code.) ----
   */
 
+  //bind event listener
   var bindEvent = function(el,event,cb) {
     var e = [event,event];
     if(typeof event === 'object') {
@@ -60,20 +62,26 @@
   //with a bit of fiddling from me!
   var hasClass = function(ele,cls) {
   	return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-  }
+  };
   var addClass = function(ele,cls) {
   	if (!hasClass(ele,cls)) {
       var classNames = ele.className.split(/\s+/);
       classNames.push(cls);
       console.log(ele.className = classNames.join(' '));
     }
-  }
-  var removeClass = function(ele,cls) {
-  	if (hasClass(ele,cls)) {
+  };
+  var removeClass = function(el,cls) {
+  	if (hasClass(el,cls)) {
   		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
   		ele.className=ele.className.replace(reg,' ');
   	}
-  }
+  };
+
+  var setAttr = function(el,attr) {
+    for(var i in attr) {
+      el.setAttribute(i,attr[i]);
+    };
+  };
 
   var documentWidth = function() {
     return w.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
@@ -211,7 +219,26 @@
     else {
       return;
     }
-  }
+  };
+
+  var addPageNavigation = function() {
+
+    //create menu wrapper
+    var m = d.createElement('nav');
+    setAttr(m,{
+      'role':'menu',
+      'aria-label':'Navigation controls'
+    });
+
+    //create back/forward elememts.
+    var fw = d.createElement('a');
+    fw.setAttribute('href','#p-2');
+
+    //put it all together.
+    m.appendChild(fw);
+
+    d.body.appendChild(m);
+  };
 
   //easeOut function
   //t:time,b:start val,c:change in val,d:duration
