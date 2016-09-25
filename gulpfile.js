@@ -13,7 +13,6 @@ var htmlmin = require('gulp-htmlmin');
 var nunjucks = require('gulp-nunjucks');
 var autoprefixer = require('gulp-autoprefixer');
 var fs = require('fs');
-var postcss = require('gulp-postcss');
 
 var paths = {
   templates: './pages/**/*'
@@ -33,14 +32,9 @@ gulp.task('connect', function() {
 gulp.task('clean:html', function (done) {
   gulp.on('end', function () { done(); });
   return del([
-    'docs/**/*.html'
+    'docs/*.html'
   ]);
 
-});
-gulp.task('clean:static', function () {
-  return del([
-    'docs/images'
-  ]);
 });
 gulp.task('clean:js', function () {
   return del([
@@ -69,7 +63,7 @@ gulp.task('copy:html', ['clean:html','data'], function() {
 gulp.task('watch', function () {
   gulp.watch(['./pages/**/*','./data/**/*'],['copy']);
   gulp.watch(['./modules/**/*.js'],['js']);
-  gulp.watch(['./less/**/*.less'],['less','wcag']);
+  gulp.watch(['./less/**/*.less'],['less']);
 });
 
 gulp.task('js', ['clean:js'],function() {
@@ -80,7 +74,7 @@ gulp.task('js', ['clean:js'],function() {
 });
 
 gulp.task('less', ['clean:css'],function() {
-  return gulp.src('./less/**/b.less')
+  return gulp.src(['./less/b.less','./less/e.less'])
   .pipe(less({
     plugins: [],
     paths: [path.join(__dirname, 'less', 'includes')]
@@ -102,16 +96,5 @@ gulp.task('data', function(done) {
     .on('end', function () { done(); });
 });
 
-//test the css for WCAG compliance
-gulp.task('wcag', function () {
-    return gulp.src('./docs/*.css').pipe(
-        postcss([
-            require('postcss-wcag-contrast')({ /* options */ })
-        ])
-    ).pipe(
-        gulp.dest('.')
-    );
-});
-
-gulp.task('default', ['connect', 'copy', 'js', 'less', 'wcag', 'watch']);
+gulp.task('default', ['connect', 'copy', 'js', 'less', 'watch']);
 gulp.task('build',['copy','js','less'])

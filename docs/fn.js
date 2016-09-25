@@ -9,34 +9,24 @@
 
   var opts = {
     pages: [],
-    colors: [],
-    pageSelector: '.pg',
-    pageLoaded: 'pg--loaded',
-    pageCurrent: 'pg--current',
-    navSelector: '.toc_l'
+    pageSelector: 'section',
+    pageTitle: 'Albie and Ember, a children\'s story'
   };
 
   var pagesArray = d.querySelectorAll(opts.pageSelector);
 
   var init = function() {
+    loadStyles('e.css','screen');
+    pagesFactory();
     checkPageInView();
     addPageNavigation();
-    //initColors();
     //handle scroll
     bindEvent(w,'scroll',function() {
       checkPageInView();
-      //replaceBgColor();
     });
     //handle resize
     bindEvent(w,'resize',function() {
 
-    });
-    //handle user clicking on the nav links
-    handlePageNavigation();
-    //handle hash change
-    bindEvent(w,['hashchange','onhashchange'],function(e) {
-      e.preventDefault();
-      console.log(e);
     });
   };
 
@@ -44,19 +34,29 @@
   ---- Utilities (like my own mini jQuery. sortof. well, at least a way of writing less code.) ----
   */
 
-  //bind event listener
+  //bind event listener. event can be an event name string, or an array of event names.
   var bindEvent = function(el,event,cb) {
-    var e = [event,event];
     if(typeof event === 'object') {
-      e[0] = event[0]; e[1] = event[1];
+      for(var i in event) {
+        el.addEventListener(event[i],cb);
+      }
     }
-    if(hasListener) {
-      el.addEventListener(e[0],cb);
-    }
-    if(hasAttach) {
-      el.attachEvent(e[1],cb);
+    else {
+      el.addEventListener(event,cb);
     }
   };
+
+  var loadStyles = function(file,media) {
+    if (!media) media='screen';
+    var link = d.createElement('link');
+    setAttr(link,{
+      'href': file,
+      'type': 'text/css',
+      'rel':'stylesheet',
+      'media':media
+    });
+    d.getElementsByTagName('head')[0].appendChild(link);
+  }
 
   //http://www.openjs.com/scripts/dom/class_manipulation.php
   //with a bit of fiddling from me!
@@ -67,7 +67,6 @@
   	if (!hasClass(ele,cls)) {
       var classNames = ele.className.split(/\s+/);
       classNames.push(cls);
-      console.log(ele.className = classNames.join(' '));
     }
   };
   var removeClass = function(el,cls) {
@@ -115,114 +114,48 @@
 
   var checkPageInView = function() {
     pagesFactory();
-    var pageInView = null;
+    var pageInView = [];
     opts.pages.forEach(function(obj,i) {
-      removeClass(obj.el,opts.pageCurrent);
       if(obj.offset <= documentScrollPosition()) {
-        addClass(obj.el,opts.pageLoaded);
-        pageInView = {el: obj.el, id: i};
+        pageInView.push(i + 1);
       };
-      if(obj.offset == documentScrollPosition() + 10 || obj.offset == documentScrollPosition() - 10) {
-        addClass(obj.el,opts.pageCurrent);
-      }
     });
+    var pageInView = pageInView.pop();
+    setHashFromLocation(pageInView);
     return pageInView;
   };
 
-  //replace background colour on scroll http://stackoverflow.com/questions/16844723/change-background-color-on-scroll
-  var replaceBgColor = function() {
-    if(opts.colors.length > 0) {
-      var el = d.getElementsByTagName('body')[0]; // Element to be scrolled
-      var length = opts.colors.length; // Number of colors
-      var height = Math.round(documentHeight());
+  var setHashFromLocation = function(pageInView) {
+    var page = getPagesFromHash();
+    if(pageInView != page.current) {
+      setPageTitle(pageInView);
+      history.replaceState(null,null,'#p-'+pageInView);
+    }
+  };
 
-      var i = Math.floor(documentScrollPosition() / height);  // Start color index
-      var dN = documentScrollPosition() % height / height;    // Which part of the segment between start color and end color is passed
-      var c1 = opts.colors[i].hsl;                            // Start color
-      var c2 = opts.colors[(i+1)%length].hsl;                 // End color
-      var h = c1[0] + Math.round((c2[0] - c1[0]) * dN);
-      var s = c1[1] + Math.round((c2[1] - c1[1]) * dN);
-      var l = c1[2] + Math.round((c2[2] - c1[2]) * dN);
-      d.body.style['background-color'] = ['hsl(', h, ', ', s+'%, ', l, '%)'].join('');
+  var setPageTitle = function(page) {
+    d.title = 'Page ' + page + ': ' + opts.pageTitle;
+  }
+
+  var getPagesFromHash = function() {
+    var pageInView = 1;
+    if(w.location.hash) {
+      pageInView = parseInt(w.location.hash.match(/\d+$/g)[0]);
+    }
+    var nextPage = pageInView + 1;
+    if(opts.pages.length < nextPage) {
+      nextPage = opts.pages.length;
     };
-  };
-  //init the colours.
-  var initColors = function() {
-    Array.prototype.forEach.call(pagesArray, function(el, i){
-      if(w.getComputedStyle) {
-        var rgb = w.getComputedStyle(el).getPropertyValue('background-color');
-        var rgbA = rgb.replace(' ','').replace(/rgba?\(/g,'').replace(/\)/g,'').split(',');
-        var hsl = rgbToHsl(parseInt(rgbA[0]),parseInt(rgbA[1]),parseInt(rgbA[2]));
-        //store page colours
-        opts.colors.push({rgb: rgb, hsl: hsl});
-        //remove css backgrounds
-        el.style.backgroundColor = 'transparent';
-      };
-    });
-    //set new bg
-    replaceBgColor();
-  };
-
-  //rbgToHsl
-  function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
+    var prevPage = pageInView - 1;
+    if(prevPage < 1) {
+      prevPage = 1;
     }
-    return [Math.floor(h * 360), Math.floor(s * 100), Math.floor(l * 100)];
-}
-
-  //smooth scroll.
-  var handlePageNavigation = function() {
-    var navLinks = d.querySelectorAll(opts.navSelector);
-    Array.prototype.forEach.call(navLinks, function(el, i){
-      bindEvent(el,'click',function(e) {
-        e.preventDefault();
-        var to = parseInt(this.textContent) - 1;
-        smoothScroll(500,documentScrollPosition(),opts.pages[to].offset);
-      });
-    });
-  };
-
-  var smoothScroll = function(speed,fromPos,toPos) {
-    var pxPerMs = 13; //Pixel distance to travel each ms
-    var hops = (speed - (speed % pxPerMs)) / pxPerMs; //Number of hops in this animation
-    var gap = Math.round((toPos - fromPos) / hops); //Gap between the current position and traget position
-    speed = Math.round(speed / hops); //Speed as a function of hops
-    doSmoothScroll(false,hops,1,speed,fromPos,gap);
-  };
-
-  var doSmoothScroll = function(flag,hops,runs,speed,fromPos,gap) {
-    if(!flag) {
-      setTimeout(function() {
-        var easedGap = easeInOutSine(runs,fromPos,runs*gap,hops);
-        w.scrollTo(0, easedGap);
-        if(hops===runs) {
-          doSmoothScroll(true,hops,runs,speed,fromPos,gap);
-        }
-        else {
-          doSmoothScroll(false,hops,runs+1,speed,fromPos,gap);
-        }
-      },speed);
-    }
-    else {
-      return;
-    }
-  };
+    var obj = {'current':pageInView,'next':nextPage,'prev':prevPage};
+    return obj;
+  }
 
   var addPageNavigation = function() {
-
+    var pages = getPagesFromHash();
     //create menu wrapper
     var m = d.createElement('nav');
     setAttr(m,{
@@ -230,20 +163,55 @@
       'aria-label':'Navigation controls'
     });
 
+
     //create back/forward elememts.
     var fw = d.createElement('a');
-    fw.setAttribute('href','#p-2');
+    setAttr(fw,{
+      'href':'#p-' + pages.next,
+      'role':'menuitem',
+      'class':'fw',
+      'aria-label': 'Jump to the next page, press the N or right arrow key.'
+    });
+    fw.innerHTML = 'Next Page <span class="menu_key">N</span><span class="menu_or"> or </span><span class="menu_key">&rarr;</span>';
+
+    var bk = d.createElement('a');
+    setAttr(bk,{
+      'href':'#p-' + pages.prev,
+      'role':'menuitem',
+      'class':'bk',
+      'aria-label': 'Jump to the next page, press the P or left arrow key.'
+    });
+    bk.innerHTML = 'Previous Page <span class="menu_key">P</span><span class="menu_or"> or </span><span class="menu_key">&larr;</span>';
+
+    //handle next page click
+    bindEvent(fw,['click','touchstart'],function() {
+      var pages = getPagesFromHash();
+      setAttr(this,{'href':'#p-' + pages.next});
+      setPageTitle(pages.next);
+    });
+
+    //handle prev page click
+    bindEvent(bk,['click','touchstart'],function() {
+      var pages = getPagesFromHash();
+      setAttr(this,{'href':'#p-' + pages.prev});
+      setPageTitle(pages.prev);
+    });
+
+    //handle keypresses
+    bindEvent(d,'keydown',function(e) {
+      console.log(e);
+      if(e.key == 'n' || e.key == 'ArrowRight') {
+        fw.click();
+      };
+      if(e.key == 'p' || e.key == 'ArrowLeft') {
+        bk.click();
+      };
+    });
 
     //put it all together.
+    m.appendChild(bk);
     m.appendChild(fw);
-
     d.body.appendChild(m);
-  };
-
-  //easeOut function
-  //t:time,b:start val,c:change in val,d:duration
-  var easeInOutSine = function (t, b, c, d) {
-    return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
   };
 
   init();
