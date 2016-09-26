@@ -68,8 +68,7 @@ gulp.task('watch', function () {
 
 gulp.task('js', ['clean:js'],function() {
   return gulp.src(['./modules/fn.js'])
-  //removing the uglify step for dev ±±±±±± PUT THIS BACK.
-  //.pipe(uglify())
+  .pipe(uglify())
   .pipe(gulp.dest('docs/'));
 });
 

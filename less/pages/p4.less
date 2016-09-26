@@ -13,6 +13,9 @@
     stroke: lighten(@page4,5%);
     stroke: fade(white,10%);
     stroke-width: 5;
+    animation: swoosh 5s infinite linear;
+    stroke-dasharray: 1250 120;
+    animation-direction: normal;
     @media screen and (min-width: 800px) {
       stroke-width: 7;
     }
@@ -34,4 +37,14 @@
     fill: lighten(@page4,2%);
     fill: fade(white,6%);
   }
+
+  @keyframes swoosh {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 1310;
+    }
+  }
+
 }

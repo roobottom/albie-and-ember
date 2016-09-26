@@ -37,7 +37,7 @@ section {
 
   .t {
     @f: 22;
-    text-shadow: 0 1px 1px fade(black,20%);
+    text-shadow: 2px 2px 0 fade(black,20%);
     font-size: unit(@f,px);
     font-size: unit(@f/@base,rem);
     line-height: 1.5;
@@ -69,6 +69,22 @@ section {
     }
   }
 }
+
+@keyframes twinkle {
+  0% {
+    fill: fade(white,40%);
+  }
+  30% {
+    fill: white;
+  }
+  50% {
+    fill: fade(white,40%);
+  }
+  100% {
+    fill: fade(white,40%);
+  }
+}
+
 @import 'pages/p1.less';
 @import 'pages/p2.less';
 @import 'pages/p3.less';

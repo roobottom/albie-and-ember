@@ -18,23 +18,53 @@
   .i2 {
     fill: lighten(@page6,20%);
     color: darken(@page6,5%);
+    animation: blink 5s infinite linear;
+    animation-direction: normal;
   }
   .b1 {
     fill: lighten(@page6,22%);
-    top: 50%;
+    fill: fade(white,40%);
+    top: 20%;
     right: 3%;
     opacity: 0.4;
+    animation: twinkle 6s infinite linear;
   }
   .b2 {
     fill: lighten(@page6,18%);
+    fill: fade(white,30%);
     top: 15%;
     left: 20%;
     opacity: 0.6;
+    animation: twinkle 6s infinite linear 2s;
   }
   .b3 {
     fill: lighten(@page6,25%);
-    top: 70%;
+    fill: fade(white,20%);
+    top: 30%;
     left: 50%;
     opacity: 0.4;
+    animation: twinkle 6s infinite linear 4s;
   }
+
+  @keyframes blink {
+    0% {
+      color: darken(@page6,5%);
+    }
+    96% {
+      color: darken(@page6,5%);
+    }
+    97% {
+      color: transparent;
+    }
+    98% {
+      color: darken(@page6,5%);
+    }
+    99% {
+      color: transparent;
+    }
+    100% {
+      color: darken(@page6,5%);
+    }
+  }
+
 }

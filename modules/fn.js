@@ -199,7 +199,6 @@
 
     //handle keypresses
     bindEvent(d,'keydown',function(e) {
-      console.log(e);
       if(e.key == 'n' || e.key == 'ArrowRight') {
         fw.click();
       };

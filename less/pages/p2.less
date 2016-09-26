@@ -25,40 +25,35 @@
     stroke: darken(@page2,12%);
     stroke: fade(white,20%);
     stroke-width: 10;
+    stroke-dasharray: 30 25;
   }
 
-  .i2 {
-    animation: r 10s infinite ease-in;
+  .i2,.i4,.i6,.i7 {
+    animation: fw 1s infinite linear;
+    animation-fill-mode: forwards;
   }
-  .i3 {
-    animation: r 10s infinite ease-in;
-    animation-delay: 2s;
-    animation-direction: reverse;
-  }
-  .i4 {
-    animation: r 10s infinite ease-in;
-    animation-delay: 4s;
-  }
-  .i5 {
-    animation: r 10s infinite ease-in;
-    animation-delay: 6s;
-    animation-direction: reverse;
+  .i3,.i5,.i8,.i9 {
+    animation: bk 1s infinite linear;
+    animation-fill-mode: forwards;
   }
 
-  @keyframes r {
+  @keyframes fw {
     0% {
       stroke-dashoffset: 0;
-      stroke-dasharray: 40 20;
-    }
-    80% {
-      stroke-dashoffset: 0;
-      stroke-dasharray: 40 20;
+
     }
     100% {
-      stroke-dashoffset: 60;
-      stroke-dasharray: 40 20;
+      stroke-dashoffset: 55;
     }
+  }
 
+  @keyframes bk {
+    0% {
+      stroke-dashoffset: 55;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
   }
 
 }

@@ -10,10 +10,21 @@
     }
   }
   .i1 {
-    stroke: lighten(@page8,80%);
+    stroke: lighten(@page8,30%);
     stroke-width: 5;
+    animation: drift 2.5s infinite linear;
     @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       stroke-width: 3;
     }
   }
+
+  @keyframes drift {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: 30;
+    }
+  }
+
 }
