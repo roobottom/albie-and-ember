@@ -12,9 +12,11 @@
   .i1 {//breeze
     stroke: lighten(@page4,5%);
     stroke-width: 5;
-    animation: swoosh 5s infinite linear;
-    stroke-dasharray: 1250 120;
-    animation-direction: normal;
+    @media screen {
+      animation: swoosh 5s infinite linear;
+      stroke-dasharray: 1250 120;
+      animation-direction: normal;
+    }  
     @media screen and (min-width: 800px) {
       stroke-width: 7;
     }

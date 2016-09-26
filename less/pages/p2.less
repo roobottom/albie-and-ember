@@ -8,8 +8,9 @@
     align-self: flex-end;
     > svg {
       max-width: 300px;
-      width: 50%;
-      float: right;
+      @media screen {
+        width: 50%;
+      }
       @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
         width: 100%;
       }
@@ -17,6 +18,11 @@
   }
   .i1 {//sun
     fill: lighten(@page2,12%);
+    @media print {
+      fill: white;
+      stroke: black;
+      stroke-width: 2;
+    }
   }
   .i2, .i3, .i4, .i5,
   .i6, .i7, .i8, .i9 {//rays
@@ -37,6 +43,7 @@
       animation-fill-mode: forwards;
     }
   }
+
 
   @keyframes fw {
     0% {

@@ -31,19 +31,25 @@
     fill: lighten(@page7,10%);
     top: 20%;
     right: 15%;
-    animation: twinkle 6s infinite linear;
+    @media screen {
+      animation: twinkle 6s infinite linear;
+    }
   }
   .b2 {
     fill: lighten(@page7,15%);
     top: 10%;
     left: 5%;
-    animation: twinkle 6s infinite linear 2s;
+    @media screen {
+      animation: twinkle 6s infinite linear 2s;
+    }
   }
   .b3 {
     fill: lighten(@page7,20%);
     top: 27%;
     left: 50%;
-    animation: twinkle 6s infinite linear 4s;
+    @media screen {
+      animation: twinkle 6s infinite linear 4s;
+    }
   }
 
 }

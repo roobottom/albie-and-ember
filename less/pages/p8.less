@@ -12,7 +12,9 @@
   .i1 {
     stroke: lighten(@page8,30%);
     stroke-width: 5;
-    animation: drift 2.5s infinite linear;
+    @media screen {
+      animation: drift 2.5s infinite linear;
+    }
     @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       stroke-width: 3;
     }

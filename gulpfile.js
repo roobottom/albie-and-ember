@@ -78,7 +78,7 @@ gulp.task('watch', function () {
 
 gulp.task('js', ['clean:js'],function() {
   return gulp.src(['./modules/fn.js'])
-  .pipe(uglify())
+  //.pipe(uglify())
   .pipe(gulp.dest('docs/'));
 });
 

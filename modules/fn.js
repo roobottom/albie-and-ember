@@ -17,17 +17,7 @@
 
   var init = function() {
     loadStyles('e.css','screen');
-    //pagesFactory();
-    //checkPageInView();
-    //addPageNavigation();
-    //handle scroll
-    bindEvent(w,'scroll',function() {
-      //checkPageInView();
-    });
-    //handle resize
-    bindEvent(w,'resize',function() {
-
-    });
+    addClass(d.body,'enhanced');
   };
 
   /*
@@ -67,6 +57,7 @@
   	if (!hasClass(ele,cls)) {
       var classNames = ele.className.split(/\s+/);
       classNames.push(cls);
+      ele.className = classNames.join(' ');
     }
   };
   var removeClass = function(el,cls) {

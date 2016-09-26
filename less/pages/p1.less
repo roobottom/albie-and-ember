@@ -22,4 +22,12 @@
   .i4 {//arm
     fill: @page1;
   }
+  .i1,.i2,.i3,.i4 {
+    @media print {
+      fill: white;
+      stroke: black;
+      stroke-width: 2;
+      color: white;
+    }
+  }
 }
