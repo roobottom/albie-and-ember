@@ -23,26 +23,27 @@
 
   .i1 {//house
     fill: darken(@page7,10%);
-    fill: fade(black,10%);
   }
   .i2 {//window
     fill: lighten(@page7,5%);
-    fill: fade(white,20%);
   }
   .b1 {
-    fill: fade(white,22%);
+    fill: lighten(@page7,10%);
     top: 20%;
     right: 15%;
+    animation: twinkle 6s infinite linear;
   }
   .b2 {
-    fill: fade(white,18%);
+    fill: lighten(@page7,15%);
     top: 10%;
     left: 5%;
+    animation: twinkle 6s infinite linear 2s;
   }
   .b3 {
-    fill: fade(white,25%);
+    fill: lighten(@page7,20%);
     top: 27%;
     left: 50%;
+    animation: twinkle 6s infinite linear 4s;
   }
 
 }

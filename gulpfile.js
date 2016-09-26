@@ -46,8 +46,14 @@ gulp.task('clean:css', function () {
     'docs/*.css'
   ]);
 });
+gulp.task('clean:assets', function () {
+  return del([
+    'docs/*.ico',
+    'docs/*.png'
+  ]);
+});
 
-gulp.task('copy',['copy:html']);
+gulp.task('copy',['copy:html','copy:assets']);
 
 gulp.task('copy:html', ['clean:html','data'], function() {
   //var pageData = require('./data/pages.json');
@@ -58,6 +64,10 @@ gulp.task('copy:html', ['clean:html','data'], function() {
   .pipe(nunjucks.compile())
   .pipe(htmlmin({collapseWhitespace: true, minifyJS: true, removeComments: true}))
   .pipe(gulp.dest('./docs/'));
+});
+gulp.task('copy:assets', ['clean:assets'], function() {
+  gulp.src(['./assets/**/*'])
+  .pipe(gulp.dest('./docs/'))
 });
 
 gulp.task('watch', function () {

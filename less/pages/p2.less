@@ -1,6 +1,5 @@
 #p-2 {
   background: @page2;
-  //color: contrast(@page2, white, darken(@page2,40%));
 
   .c {
     flex-direction: column-reverse;
@@ -17,24 +16,26 @@
     }
   }
   .i1 {//sun
-    fill: darken(@page2,12%);
-    fill: fade(white,20%);
+    fill: lighten(@page2,12%);
   }
   .i2, .i3, .i4, .i5,
   .i6, .i7, .i8, .i9 {//rays
-    stroke: darken(@page2,12%);
-    stroke: fade(white,20%);
+    stroke: lighten(@page2,12%);
     stroke-width: 10;
     stroke-dasharray: 30 25;
   }
 
   .i2,.i4,.i6,.i7 {
-    animation: fw 1s infinite linear;
-    animation-fill-mode: forwards;
+    @media screen {
+      animation: fw 1s infinite linear;
+      animation-fill-mode: forwards;
+    }
   }
   .i3,.i5,.i8,.i9 {
-    animation: bk 1s infinite linear;
-    animation-fill-mode: forwards;
+    @media screen {
+      animation: bk 1s infinite linear;
+      animation-fill-mode: forwards;
+    }
   }
 
   @keyframes fw {

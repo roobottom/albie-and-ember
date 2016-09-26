@@ -17,12 +17,12 @@
 
   var init = function() {
     loadStyles('e.css','screen');
-    pagesFactory();
-    checkPageInView();
-    addPageNavigation();
+    //pagesFactory();
+    //checkPageInView();
+    //addPageNavigation();
     //handle scroll
     bindEvent(w,'scroll',function() {
-      checkPageInView();
+      //checkPageInView();
     });
     //handle resize
     bindEvent(w,'resize',function() {

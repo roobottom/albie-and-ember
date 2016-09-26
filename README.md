@@ -3,7 +3,7 @@
 
 ## Who made this?
 
-Story and development by [Jon Roobottom](http://roobottom.com). Illustrations by Rachel Anderson. 
+Story and development by [Jon Roobottom](http://roobottom.com). Design by [Rachel Anderson](http://www.rachelandersondesign.me). 
 
 ## Design Principals
 The story was designed by following a few core principals:
@@ -71,9 +71,10 @@ Some build tools were used to squeeze every last unneeded byte from this project
 
 ### Other tools
 
-In addition to automatically minifying, I used a number of tools to help in keeping development code as trim as possible.
+In addition to automatically minifying, I used a number of tools to help with magnification and accessibility checking.
 
 * [SVGOMG](https://jakearchibald.github.io/svgomg/) A fantastic tool to aid in compressing SVGs.
+* [a11y](https://addyosmani.com/a11y/) A CLI test suite for accessibility auditing. (This project has 100% pass rate)
 
 ## API
 
