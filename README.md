@@ -16,12 +16,12 @@ The story was designed by following a few core principals:
 
 ## How this project attempts to meet the judging criteria
 
-### Accessibility (10 points)
+### Accessibility
 
 * Wide use of Aria tags and roles
 * Contrast of `background-color` and `color` is tested AA complient. 
 
-### Interoperability (10 points)
+### Interoperability
 
 * The basic experience is tested in:
 	* IE9,10,11
@@ -35,7 +35,7 @@ The story was designed by following a few core principals:
 	* A **Colour-in Albie and Ember** print experience is delivered via `@media print`
 
 
-### Performance (40 points)
+### Performance
 
 * SVGs all optimised and reused as much as possible.
 * HTML, CSS and JS are all conservatively written
@@ -43,19 +43,22 @@ The story was designed by following a few core principals:
 * Editing is made easy by the use of (the excellent) [Nunjucks](https://mozilla.github.io/nunjucks/) templates and a custom markdown build process.
 * All JS is custom and tweaked for performance.
 
-### Progressive enhancement (20 points)
+### Progressive enhancement
 
 * This is, at its heart, a story. If nothing else is possible, the basic story text should be accessible to all browsers.
 * A functionality Javascript is lazy loaded. This then loads-in other assets (including the font) in a non blocking way.
- * `@media all` is used to cut the mustard, to isolate some of the more advanced css from older browsers that might mangle it.
+* `@media all` is used to cut the mustard, to isolate some of the more advanced css from older browsers that might mangle it.
 
-### Usefulness or Novelty (10 points)
+### Usefulness or Novelty
 
 * Well, it’s an original story!
+* There's a Colour-in version waiting in your printer!
 
-### Design & User Experience (10 points)
+### Design & User Experience
 
-* 
+* It's aprroved by our no.1 tester:
+
+![Ember, being read Albie and Ember](/__development/photos/IMG_1522.jpg)
 
 ## Tools used
 
