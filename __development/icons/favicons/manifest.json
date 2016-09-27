@@ -1,0 +1,12 @@
+{
+	"name": "Albie Ember",
+	"icons": [
+		{
+			"src": "\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#C8527E",
+	"display": "standalone"
+}

@@ -1,6 +1,16 @@
 //enhanced css
 @import '_settings.less';
-@import 'https://fonts.googleapis.com/css?family=ABeeZee';
+@font-face {
+    font-family: 'abeezee';
+    src: url('fonts/abeezee.woff2') format('woff2'),
+         url('fonts/abeezee.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body.enhanced {
+  font-family: "ABeeZee",sans-serif;
+}
 
 nav {
   font-family: "Gill Sans","Gill Sans MT",Calibri,sans-serif;

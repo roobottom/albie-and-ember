@@ -48,8 +48,10 @@ gulp.task('clean:css', function () {
 });
 gulp.task('clean:assets', function () {
   return del([
-    'docs/*.ico',
-    'docs/*.png'
+    'docs/**/*',
+    '!docs/**/*.js',
+    '!docs/**/*.css',
+    '!docs/**/*.html',
   ]);
 });
 
