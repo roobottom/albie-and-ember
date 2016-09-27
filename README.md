@@ -3,7 +3,9 @@
 
 ## Note to judges:
 
-**The files we wish to submit for entry are in `/docs`. Other files in the root are part of the build process, and are not required for the website to run. This is a static-file entry.**
+The files we wish to submit for entry are in `/docs`. Other files in the root are part of the build process, and are not required for the website to run.
+
+The 10K limit is only met if files are served via gzip. If your server doesn’t support gzip, one is provided. Please see the [API](#api) section for further details.
 
 ## Who made this?
 
@@ -87,17 +89,20 @@ In addition to automatically minifying, I used a number of tools to help with ma
 
 ## API
 
+First, please run `npm install` to install all dependencies for this project. Setting your environment variable to `development` will also install development dependencies.
+
 ### development
 
 You can run `gulp` commands directly:
 
-* `gulp` builds the site and start the devlopment server on port `8080`
+* `gulp` builds the site and start the development server on port `8080`
 * `gulp build` builds the site, but doesn't run a server
+
 
 ### Live
 
 Running `npm start` will:
 
-* Install all dependancies.
 * Build out the site to the `docs` folder
-* Start an expressjs server with gzip compression enabled on port `3030`
+* Start an [Expressjs](http://expressjs.com/) server with gzip compression enabled on port `3030`
+
