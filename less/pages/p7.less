@@ -15,9 +15,11 @@
     @media screen and (min-width: (unit(@layout_narrow/@base,em))) {
       width: 30%;
     }
-    align-self: flex-end;
-    >svg {
-      max-width: 250px;
+    @media screen {
+      align-self: flex-end;
+      >svg {
+        max-width: 250px;
+      }
     }
   }
 
@@ -27,6 +29,15 @@
   .i2 {//window
     fill: lighten(@page7,5%);
   }
+
+  @media print {
+    .i1,.i2 {
+      fill: white;
+      stroke: black;
+      stroke-width: 2;
+    }
+  }
+
   .b1 {
     fill: lighten(@page7,10%);
     top: 20%;

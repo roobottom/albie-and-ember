@@ -13,6 +13,7 @@ var htmlmin = require('gulp-htmlmin');
 var nunjucks = require('gulp-nunjucks');
 var autoprefixer = require('gulp-autoprefixer');
 var fs = require('fs');
+var gcmq = require('gulp-group-css-media-queries');
 
 var paths = {
   templates: './pages/**/*'
@@ -85,7 +86,7 @@ gulp.task('js', ['clean:js'],function() {
 });
 
 gulp.task('less', ['clean:css'],function() {
-  return gulp.src(['./less/b.less','./less/e.less'])
+  return gulp.src(['./less/b.less','./less/fonts.less'])
   .pipe(less({
     plugins: [],
     paths: [path.join(__dirname, 'less', 'includes')]
@@ -94,6 +95,7 @@ gulp.task('less', ['clean:css'],function() {
       browsers: ['last 2 versions'],
       cascade: false
   }))
+  .pipe(gcmq())
   .pipe(cleanCSS())
   .pipe(gulp.dest('docs/'));
 });

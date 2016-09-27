@@ -33,7 +33,7 @@ The story was designed by following a few core principals:
 	* An assortment of Apple devices
 	* An assortment of Windows devices
 	* The lynx browser (via [Lynxlet](http://habilis.net/lynxlet/) on mac)
-	* The crappiest old PC I could find with the slowest connection and low contrast monitor
+	* A **Colour-in Albie and Ember** print experience is delivered via `@media print`
 
 
 ### Performance (40 points)
@@ -42,12 +42,12 @@ The story was designed by following a few core principals:
 * HTML, CSS and JS are all conservatively written
 * A custom build process helps compress everything even more.
 * Editing is made easy by the use of (the excellent) [Nunjucks](https://mozilla.github.io/nunjucks/) templates and a custom markdown build process.
-* All JS is custom written, re-written and tweaked for performance.
+* All JS is custom and tweaked for performance.
 
 ### Progressive enhancement (20 points)
 
 * This is, at its heart, a story. If nothing else is possible, the basic story text should be accessible to all browsers.
-* Javascript is lazy loaded and only used to add-to the main experience
+* A functionality Javascript is lazy loaded. This then loads-in other assets (including the font) in a non blocking way.
 
 ### Usefulness or Novelty (10 points)
 
@@ -67,6 +67,7 @@ Some build tools were used to squeeze every last unneeded byte from this project
 
 * [gulp-uglify](https://github.com/terinjokes/gulp-uglify): Cleans and minifies JS.
 * [gulp-clean-css](https://github.com/scniro/gulp-clean-css): Cleans and minifies CSS.
+* [gulp-group-css-media-queries](https://github.com/avaly/gulp-group-css-media-queries): Gathers all your like-for-like media queries together at the end of your css.
 * [gulp-htmlmin](https://github.com/jonschlinkert/gulp-htmlmin): Cleans and minifies HTML.
 
 ### Other tools

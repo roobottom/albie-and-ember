@@ -16,7 +16,7 @@
       animation: swoosh 5s infinite linear;
       stroke-dasharray: 1250 120;
       animation-direction: normal;
-    }  
+    }
     @media screen and (min-width: 800px) {
       stroke-width: 7;
     }
@@ -33,6 +33,14 @@
   }
   .i5 {//leaf
     fill: lighten(@page4,2%);
+  }
+
+  @media print {
+    .i2,.i3,.i4,.i5 {
+      fill: white;
+      stroke: black;
+      stroke-width: 2;
+    }
   }
 
   @keyframes swoosh {

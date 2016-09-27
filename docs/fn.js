@@ -10,14 +10,82 @@
   var opts = {
     pages: [],
     pageSelector: 'section',
-    pageTitle: 'Albie and Ember, a children\'s story'
+    fontFile: 'fonts/abeezee.woff',
+    headObjects: [
+      {
+        'tag':'link',
+        'attrs':{
+          'rel':'apple-touch-icon',
+          'sizes':'180x180',
+          'href':'apple-touch-icon.png'
+        }
+      },
+      {
+        'tag':'link',
+        'attrs':{
+          'rel':'icon',
+          'type':'image/png',
+          'href':'favicon-32x32.png',
+          'sizes':'32x32'
+        }
+      },
+      {
+        'tag':'link',
+        'attrs':{
+          'rel':'icon',
+          'type':'image/png',
+          'href':'favicon-16x16.png',
+          'sizes':'16x16'
+        }
+      },
+      {
+        'tag':'link',
+        'attrs':{
+          'rel':'manifest',
+          'href':'manifest.json'
+        }
+      },
+      {
+        'tag':'link',
+        'attrs':{
+          'rel':'mask-icon',
+          'href':'safari-pinned-tab.svg',
+          'color':'#C8527E'
+        }
+      },
+      {
+        'tag':'meta',
+        'attrs':{
+          'name':'theme-color',
+          'content':'#C8527E'
+        }
+      }
+    ]
   };
 
   var pagesArray = d.querySelectorAll(opts.pageSelector);
 
   var init = function() {
-    loadStyles('e.css','screen');
-    addClass(d.body,'enhanced');
+    //load all extra <head/> items
+    for(var i in opts.headObjects) {
+      insertInHead(opts.headObjects[i].tag,opts.headObjects[i].attrs);
+    }
+    //pre-load the font, and only show it to the user when ready.
+    var req = new XMLHttpRequest();
+    req.open('GET', opts.fontFile, true);
+    //this will force the browser to download the font file and cache it
+    req.onload = function() {
+      if (req.status >= 200 && req.status < 400) {
+        addClass(d.body,'font-loaded');
+        insertInHead('link',{
+          'href': 'fonts.css',
+          'type': 'text/css',
+          'rel':'stylesheet',
+          'media': 'screen'
+        })
+      }
+    };
+    req.send();
   };
 
   /*
@@ -36,16 +104,10 @@
     }
   };
 
-  var loadStyles = function(file,media) {
-    if (!media) media='screen';
-    var link = d.createElement('link');
-    setAttr(link,{
-      'href': file,
-      'type': 'text/css',
-      'rel':'stylesheet',
-      'media':media
-    });
-    d.getElementsByTagName('head')[0].appendChild(link);
+  var insertInHead = function(tag,attrs) {
+    var newTag = d.createElement(tag);
+    setAttr(newTag,attrs);
+    d.getElementsByTagName('head')[0].appendChild(newTag);
   }
 
   //http://www.openjs.com/scripts/dom/class_manipulation.php
@@ -73,12 +135,6 @@
     };
   };
 
-  var documentWidth = function() {
-    return w.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
-  };
-  var documentHeight = function() {
-    return w.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
-  };
   var documentScrollPosition = function() {
     return d.body.getBoundingClientRect().top * -1;
   };
@@ -112,97 +168,9 @@
       };
     });
     var pageInView = pageInView.pop();
-    setHashFromLocation(pageInView);
     return pageInView;
   };
 
-  var setHashFromLocation = function(pageInView) {
-    var page = getPagesFromHash();
-    if(pageInView != page.current) {
-      setPageTitle(pageInView);
-      history.replaceState(null,null,'#p-'+pageInView);
-    }
-  };
-
-  var setPageTitle = function(page) {
-    d.title = 'Page ' + page + ': ' + opts.pageTitle;
-  }
-
-  var getPagesFromHash = function() {
-    var pageInView = 1;
-    if(w.location.hash) {
-      pageInView = parseInt(w.location.hash.match(/\d+$/g)[0]);
-    }
-    var nextPage = pageInView + 1;
-    if(opts.pages.length < nextPage) {
-      nextPage = opts.pages.length;
-    };
-    var prevPage = pageInView - 1;
-    if(prevPage < 1) {
-      prevPage = 1;
-    }
-    var obj = {'current':pageInView,'next':nextPage,'prev':prevPage};
-    return obj;
-  }
-
-  var addPageNavigation = function() {
-    var pages = getPagesFromHash();
-    //create menu wrapper
-    var m = d.createElement('nav');
-    setAttr(m,{
-      'role':'menu',
-      'aria-label':'Navigation controls'
-    });
-
-
-    //create back/forward elememts.
-    var fw = d.createElement('a');
-    setAttr(fw,{
-      'href':'#p-' + pages.next,
-      'role':'menuitem',
-      'class':'fw',
-      'aria-label': 'Jump to the next page, press the N or right arrow key.'
-    });
-    fw.innerHTML = 'Next Page <span class="menu_key">N</span><span class="menu_or"> or </span><span class="menu_key">&rarr;</span>';
-
-    var bk = d.createElement('a');
-    setAttr(bk,{
-      'href':'#p-' + pages.prev,
-      'role':'menuitem',
-      'class':'bk',
-      'aria-label': 'Jump to the next page, press the P or left arrow key.'
-    });
-    bk.innerHTML = 'Previous Page <span class="menu_key">P</span><span class="menu_or"> or </span><span class="menu_key">&larr;</span>';
-
-    //handle next page click
-    bindEvent(fw,['click','touchstart'],function() {
-      var pages = getPagesFromHash();
-      setAttr(this,{'href':'#p-' + pages.next});
-      setPageTitle(pages.next);
-    });
-
-    //handle prev page click
-    bindEvent(bk,['click','touchstart'],function() {
-      var pages = getPagesFromHash();
-      setAttr(this,{'href':'#p-' + pages.prev});
-      setPageTitle(pages.prev);
-    });
-
-    //handle keypresses
-    bindEvent(d,'keydown',function(e) {
-      if(e.key == 'n' || e.key == 'ArrowRight') {
-        fw.click();
-      };
-      if(e.key == 'p' || e.key == 'ArrowLeft') {
-        bk.click();
-      };
-    });
-
-    //put it all together.
-    m.appendChild(bk);
-    m.appendChild(fw);
-    d.body.appendChild(m);
-  };
 
   init();
 
