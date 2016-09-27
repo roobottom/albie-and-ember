@@ -3,6 +3,9 @@ section {
   color: white;
   @media print {
     page-break-inside: avoid;
+    h1:before {
+      content: "Colour-in ";
+    }
   }
   @media screen {
     min-height: 100%;

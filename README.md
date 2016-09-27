@@ -7,7 +7,7 @@
 
 ## Who made this?
 
-Story and development by [Jon Roobottom](http://roobottom.com). Design by [Rachel Anderson](http://www.rachelandersondesign.me). 
+Story and development by [Jon Roobottom](http://roobottom.com). Design by [Rachel Anderson](http://www.rachelandersondesign.me).  
 
 ## Design Principals
 The story was designed by following a few core principals:
@@ -17,6 +17,7 @@ The story was designed by following a few core principals:
 * **SVG reuse**: Shapes should be designed to be reused as much as possible by declaring shapes in `<defs>` and calling them with `<use>`.
 * **Javascript is a second class citizen**: The core experience should work without Javascript. Nearly all of the 10Kb budget is given over to HTML/CSS/SVG. The exception being a small bit of Javascript that lazy-loads an enhanced experience.
 * **Keep enhanced files small**: Just because they’re not counted towards the budget, doesn’t mean lazy-loaded files should be bloated.
+* **Fonts** should be easily readable by children. The lazy-loaded  [ABeZeh](https://carrois.com/typefaces/ABeZeh/) is designed to be legible and kid-friendly. The version used here is released under a [SIL Open Font Licence](https://www.fontsquirrel.com/license/abeezee)
 
 ## How this project attempts to meet the judging criteria
 
