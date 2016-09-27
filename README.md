@@ -1,6 +1,10 @@
 # Albie and Ember.
 [Albie and Ember](https://roobottom.github.io/albie-and-ember/) is a single page short story. It’s our entry into the [2016 10K Apart competition](https://a-k-apart.com/), where entrants were encouraged to build a web experience weighing less than 10Kb.
 
+## Note to judges:
+
+**The files we wish to submit for entry are in `/docs`. Other files in the root are part of the build process, and are not required for the website to run. This is a static-file entry.**
+
 ## Who made this?
 
 Story and development by [Jon Roobottom](http://roobottom.com). Design by [Rachel Anderson](http://www.rachelandersondesign.me). 
