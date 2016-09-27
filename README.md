@@ -23,7 +23,6 @@ The story was designed by following a few core principals:
 
 ### Interoperability (10 points)
 
-* `@media all` is used to cut the mustard, to isolate some of the more advanced css from older browsers that might mangle it.
 * The basic experience is tested in:
 	* IE9,10,11
 	* Edge latest
@@ -48,6 +47,7 @@ The story was designed by following a few core principals:
 
 * This is, at its heart, a story. If nothing else is possible, the basic story text should be accessible to all browsers.
 * A functionality Javascript is lazy loaded. This then loads-in other assets (including the font) in a non blocking way.
+ * `@media all` is used to cut the mustard, to isolate some of the more advanced css from older browsers that might mangle it.
 
 ### Usefulness or Novelty (10 points)
 
