@@ -21,6 +21,6 @@ image:
 ---
 But then, what's this?
 
-The wind began to blow. A little at first. Albie felt it rush over him. His little arms and legs began to move.
+The wind began to blow. A little at first, Albie felt his little flappy arms and legs begin to move.
 
 It got stronger, and stronger until… Albie took off!
