@@ -2,10 +2,10 @@
   "name": "albie-and-ember",
   "version": "1.0.0",
   "description": "A chilren's story about an adventuring teddy",
-  "main": "modules/index.js",
+  "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && gulp build && node server.js"
+    "start": "gulp build && node server.js"
   },
   "author": "Jon Roobottom and Rachel Anderson",
   "license": "ISC",
