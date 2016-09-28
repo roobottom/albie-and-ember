@@ -65,7 +65,7 @@ The story was designed by following a few core principals:
 
 * It's aprroved by our no.1 tester:
 
-![Ember, being read Albie and Ember](/__development/photos/IMG_1522.jpg)
+![Ember, reading Albie and Ember](/__development/photos/IMG_1522.jpg)
 
 ## Tools used
 
@@ -87,11 +87,15 @@ In addition to automatically minifying, I used a number of tools to help with ma
 * [SVGOMG](https://jakearchibald.github.io/svgomg/) A fantastic tool to aid in compressing SVGs.
 * [a11y](https://addyosmani.com/a11y/) A CLI test suite for accessibility auditing. (This project has 100% pass rate)
 
+![A11y results](/__development/a11y.jpg)
+
 ## API
 
-First, please run `npm install` to install all dependencies for this project. Setting your environment variable to `development` will also install development dependencies.
+### Dependancies
 
-### development
+First, please run `npm install` to install all dependencies for this project. Setting `export NODE_ENV=development` will also install development dependencies.
+
+### Development
 
 You can run `gulp` commands directly:
 
