@@ -1,5 +1,5 @@
 # Albie and Ember.
-[Albie and Ember](https://roobottom.github.io/albie-and-ember/) is a single page short story. It’s our entry into the [2016 10K Apart competition](https://a-k-apart.com/), where entrants were encouraged to build a web experience weighing less than 10Kb.
+[Albie and Ember](https://roobottom.github.io/albie-and-ember/) is a single page children’s story. It’s our entry into the [2016 10K Apart competition](https://a-k-apart.com/), where entrants were encouraged to build a web experience weighing less than 10Kb.
 
 ## Note to judges:
 
@@ -35,11 +35,10 @@ The story was designed by following a few core principals:
 	* Edge latest
 	* Chrome latest
 	* Safari latest
-	* An assortment of Android devices
+	* Any Android devices I could lay my hand on (friends phones, etc)
 	* An assortment of Apple devices
-	* An assortment of Windows devices
 	* The lynx browser (via [Lynxlet](http://habilis.net/lynxlet/) on mac)
-	* A **Colour-in Albie and Ember** print experience is delivered via `@media print`
+* A **Colour-in Albie and Ember** print experience is delivered via `@media print`
 
 
 ### Performance
