@@ -10,7 +10,7 @@
   var opts = {
     pages: [],
     pageSelector: 'section',
-    fontFile: 'fonts/abeezee.woff',
+    fontFile: 'abeezee.woff',
     headObjects: [
       {
         'tag':'link',
